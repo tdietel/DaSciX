@@ -1,0 +1,58 @@
+
+* About
+
+DaSciX (Data Science Experiment) is a virtual high-energy physics
+experiment for the PHY5007Z course "Data Science for Particle Physics"
+at the University of Cape Town.
+
+The goal is to build a minimal, but complete virtual experiment that
+can simulate collisions (with Pythia 8), trace the produced particles
+through a detector geometry (with GEANT 4) and reconstruct the events
+with code that is still to be written.
+
+* Prerequisites
+
+This software package uses ROOT as the overall glue, Pythia 8 as an
+event generator and GEANT 4 for the detector simulation. This section
+gives short instructions how to install these components.
+
+** Pythia 8
+
+The [[http://home.thep.lu.se/~torbjorn/pythia81html/ROOTusage.html][Pythia 8 homepage]] provides downloads and further documentation for
+this event generator. Note in particular the instructions to use
+Pythia 8 as a [[http://home.thep.lu.se/~torbjorn/pythia81html/ROOTusage.html][module within ROOT]].
+
+In short, you can use the following commands to download, configure
+and compile Pythia 8.
+
+#+BEGIN_SRC sh
+curl http://home.thep.lu.se/~torbjorn/pythia8/pythia8226.tgz | tar -xvz
+cd pythia8226
+./configure --enable-shared
+make
+export PYTHIA8=`pwd`
+export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
+#+END_SRC
+
+** GEANT 4 
+
+Instructions to follow.
+
+
+** ROOT
+
+The [[http://root.cern.ch][ROOT homepage]] provides comprehensive documentation, source code
+and precompiled binaries for ROOT. The trick here is to compile ROOT
+with support for Pythia 8 (and GEANT 4 in the future).
+
+Minimal instructions are:
+#+BEGIN_SRC sh
+curl https://root.cern.ch/download/root_v6.08.06.source.tar.gz | tar -xvz
+mkdir build
+cd build
+cmake -Dpythia8 ../root-6.08.06
+make
+#+END_SRC
+
+
+
