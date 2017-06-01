@@ -50,7 +50,7 @@ Minimal instructions are:
 curl https://root.cern.ch/download/root_v6.08.06.source.tar.gz | tar -xvz
 mkdir build
 cd build
-cmake -D pythia8 ../root-6.08.06
+cmake -D=pythia8 ../root-6.08.06
 make
 . bin/thisroot.sh
 #+END_SRC
