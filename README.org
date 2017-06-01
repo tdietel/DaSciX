@@ -10,7 +10,7 @@ can simulate collisions (with Pythia 8), trace the produced particles
 through a detector geometry (with GEANT 4) and reconstruct the events
 with code that is still to be written.
 
-* Prerequisites
+* Installation
 
 This software package uses ROOT as the overall glue, Pythia 8 as an
 event generator and GEANT 4 for the detector simulation. This section
@@ -52,7 +52,21 @@ mkdir build
 cd build
 cmake -Dpythia8 ../root-6.08.06
 make
+. bin/thisroot.sh
 #+END_SRC
+
+** Environment Settings
+
+Whenever you login to your computer, or open a new shell, you will
+have to configure your environment with these commands:
+
+#+Begin_src sh
+export PYTHIA8=/path/to/pythia8226
+export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
+/path/to/root/bin/thisroot.sh
+#+END_SRC
+
+Consider putting these into your .bashrc or .bash_profile.
 
 
 
