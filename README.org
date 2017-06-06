@@ -109,7 +109,7 @@ You should download the sources and compile ROOT yourself. Minimal
 instructions are:
 #+BEGIN_SRC sh
 ROOT_VERSION=v6.08.06
-curl https://root.cern.ch/download/root_$ROOT_VERSION.source.tar.gz
+curl -O https://root.cern.ch/download/root_$ROOT_VERSION.source.tar.gz
 tar -xvzf root_$ROOT_VERSION.source.tar.gz
 mkdir build
 cd build
