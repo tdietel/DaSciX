@@ -86,7 +86,7 @@ install Pythia 8 in the chosen location.
 #+BEGIN_SRC sh
 mkdir -p $PYTHIA8
 cd $PYTHIA8/..
-curl http://home.thep.lu.se/~torbjorn/pythia8/$(basename $PYTHIA8).tgz 
+curl -O http://home.thep.lu.se/~torbjorn/pythia8/$(basename $PYTHIA8).tgz 
 tar -xvzf $(basename $PYTHIA8).tgz 
 cd $PYTHIA8
 ./configure --enable-shared
