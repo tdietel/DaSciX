@@ -16,57 +16,110 @@ This software package uses ROOT as the overall glue, Pythia 8 as an
 event generator and GEANT 4 for the detector simulation. This section
 gives short instructions how to install these components.
 
+** Prerequisites
+
+ROOT, Pythia and Geant depend on a number of other software packages,
+like compilers, libraries, build tools etc. This section attempts to
+give an overview how to install all required (and recommended)
+dependencies for various platforms. The main issue are the
+dependencies for ROOT, which are listed on
+[[https://root.cern.ch/build-prerequisites] [in the ROOT build
+documentation]].
+
+*** Ubuntu 17.04
+
+sudo apt-get install git dpkg-dev cmake g++ gcc binutils \
+   libx11-dev libxpm-dev libxft-dev libxext-dev \
+   gfortran libssl-dev libpcre3-dev \
+   xlibmesa-glu-dev libglew1.5-dev libftgl-dev \
+   libmysqlclient-dev libfftw3-dev libcfitsio-dev \
+   graphviz-dev libavahi-compat-libdnssd-dev \
+   libldap2-dev python-dev libxml2-dev libkrb5-dev \
+   libgsl0-dev libqt4-dev
+
+
+*** Scientific Linux 6
+
+This distribution is quite dated, and you will only support Root 5 and
+Pythia 8.1 out of the box. It was tested with Root 5.34.30 and Pythia
+8.186.
+
+*** Mac OS X
+
+You will need Xcode (from the App Store) and the Xcode Command Line
+Utilities, following for example
+[[http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/][these
+installation instructions]].
+
+
+
+
+** Environment Settings
+
+You will have to configure your environment to successfully compile
+and run ROOT with Pythia and Geant support. You can do some of the
+setup before you start compiling, but you will have to repeat some
+steps every time you log in, so you should consider to put these steps
+into your .bashrc or .bash_profile.
+
+
 ** Pythia 8
 
 The [[http://home.thep.lu.se/~torbjorn/pythia81html/ROOTusage.html][Pythia 8 homepage]] provides downloads and further documentation for
 this event generator. Note in particular the instructions to use
-Pythia 8 as a [[http://home.thep.lu.se/~torbjorn/pythia81html/ROOTusage.html][module within ROOT]].
+Pythia 8 as a [[http://home.thep.lu.se/~torbjorn/pythia81html/ROOTusage.html][module within ROOT]]. In the following, we will give you
+minimal instructions how to compile Pythia.
 
-In short, you can use the following commands to download, configure
-and compile Pythia 8.
+You first have to decide where to install Pythia, and set the
+directories. This has to be repeated whenever you login, and should be
+added to your bash startup files. In this example, we install
+everything under sw in your home directory, but you can easily change
+this if you prefer another location. 
+#+Begin_src sh
+export PYTHIA8=~/sw/pythia8226
+export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
+#+END_SRC
+
+Once the environment variables are set, you can use these commands to
+install Pythia 8 in the chosen location.
 
 #+BEGIN_SRC sh
-curl http://home.thep.lu.se/~torbjorn/pythia8/pythia8226.tgz | tar -xvz
-cd pythia8226
+mkdir -p $PYTHIA8
+cd $PYTHIA8/..
+curl http://home.thep.lu.se/~torbjorn/pythia8/$(basename $PYTHIA8).tgz 
+tar -xvzf $(basename $PYTHIA8).tgz 
+cd $PYTHIA8
 ./configure --enable-shared
 make
-export PYTHIA8=`pwd`
-export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
 #+END_SRC
 
 ** GEANT 4 
 
 Instructions to follow.
 
-
 ** ROOT
 
 The [[http://root.cern.ch][ROOT homepage]] provides comprehensive documentation, source code
-and precompiled binaries for ROOT. The trick here is to compile ROOT
-with support for Pythia 8 (and GEANT 4 in the future).
+and precompiled binaries for ROOT. However, precompiled binaries - including the
+ones you would usually find with your package managers such as
+homebrew, apt or yum - usually do not include the interfaces for
+Pythia or Geant and should therefore be avoided. 
 
-Minimal instructions are:
+You should download the sources and compile ROOT yourself. Minimal
+instructions are:
 #+BEGIN_SRC sh
-curl https://root.cern.ch/download/root_v6.08.06.source.tar.gz | tar -xvz
+ROOT_VERSION=v6.08.06
+curl https://root.cern.ch/download/root_$ROOT_VERSION.source.tar.gz
+tar -xvzf root_$ROOT_VERSION.source.tar.gz
+mv root-$ROOT_VERSION src
 mkdir build
 cd build
-cmake -D pythia8 ../root-6.08.06
+cmake  -Dpythia8=ON \
+       -DPYTHIA8_LIBRARY=$PYTHIA8/lib/libpythia8.so \
+       -DPYTHIA8_INCLUDE_DIR=$PYTHIA8/include \
+       ../src/
 make
 . bin/thisroot.sh
 #+END_SRC
-
-** Environment Settings
-
-Whenever you login to your computer, or open a new shell, you will
-have to configure your environment with these commands:
-
-#+Begin_src sh
-export PYTHIA8=/path/to/pythia8226
-export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
-/path/to/root/bin/thisroot.sh
-#+END_SRC
-
-Consider putting these into your .bashrc or .bash_profile.
-
 
 
