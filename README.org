@@ -111,13 +111,12 @@ instructions are:
 ROOT_VERSION=v6.08.06
 curl https://root.cern.ch/download/root_$ROOT_VERSION.source.tar.gz
 tar -xvzf root_$ROOT_VERSION.source.tar.gz
-mv root-$ROOT_VERSION src
 mkdir build
 cd build
 cmake  -Dpythia8=ON \
        -DPYTHIA8_LIBRARY=$PYTHIA8/lib/libpythia8.so \
        -DPYTHIA8_INCLUDE_DIR=$PYTHIA8/include \
-       ../src/
+       ../root-$ROOT_VERSION
 make
 . bin/thisroot.sh
 #+END_SRC
