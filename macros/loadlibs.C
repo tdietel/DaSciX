@@ -166,7 +166,7 @@ void loadlibs()
 
   // DaSciX library
   cout << "Loading DaSciX library ..." << endl;
-  gSystem->Load(Form("%s/Detector/test/libvmc_E02",
+  gSystem->Load(Form("%s/Detector/build/libvmc_E02",
 		     gSystem->Getenv("DASCIX_DIR")));
   
 
