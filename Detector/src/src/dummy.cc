@@ -1,3 +1,0 @@
-void dummy() {
-  // do nothing
-}  
