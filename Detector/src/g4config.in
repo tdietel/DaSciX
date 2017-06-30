@@ -1,0 +1,21 @@
+#------------------------------------------------
+# The Virtual Monte Carlo examples
+# Copyright (C) 2007 - 2014 Ivana Hrivnacova
+# All rights reserved.
+#
+# For the licensing terms see geant4_vmc/LICENSE.
+# Contact: root-vmc@cern.ch
+#-------------------------------------------------
+
+#
+# Geant4 configuration macro for Example02
+# (called from Root macro Config.C)
+
+/mcPhysics/rangeCuts 10. mm
+/mcVerbose/all 1
+
+/control/cout/ignoreThreadsExcept 0
+
+#/mcMagField/stepperType HelixHeum
+#/mcMagField/printParameters
+#/tracking/verbose 1
