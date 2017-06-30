@@ -174,8 +174,8 @@ clean: CMakeFiles/g4vmc_exampleE02.dir/clean
 # Target rules for target CMakeFiles/E02.dir
 
 # All Build rule for target.
-CMakeFiles/E02.dir/all: CMakeFiles/g4vmc_exampleE02.dir/all
 CMakeFiles/E02.dir/all: CMakeFiles/g4vmc_testE02.dir/all
+CMakeFiles/E02.dir/all: CMakeFiles/g4vmc_exampleE02.dir/all
 	$(MAKE) -f CMakeFiles/E02.dir/build.make CMakeFiles/E02.dir/depend
 	$(MAKE) -f CMakeFiles/E02.dir/build.make CMakeFiles/E02.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/chris/DaSciX/Detector/build/CMakeFiles --progress-num= "Built target E02"
