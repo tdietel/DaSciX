@@ -122,3 +122,13 @@ make
 #+END_SRC
 
 
+
+* Compilation
+
+The Geant4 detector model must be compiled:
+#+BEGIN_SRC sh
+mkdir Detector/build
+cd Detector/build
+cmake ../src/
+make
+#+END_SRC

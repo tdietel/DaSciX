@@ -32,13 +32,14 @@ set(test_name test${PROJECT_NAME})
 # (for building MC independent code)
 #
 set(CMAKE_MODULE_PATH 
-    ${Geant4VMC_DIR}/Modules
+    $ENV{Geant4VMC_DIR}/Modules
     ${Geant3_DIR}/Modules
     ${CMAKE_MODULE_PATH}) 
 
 #----------------------------------------------------------------------------
 # VMC Configuration file
 #
+set(VMC_WITH_Geant4 ON)
 include(UseVMC)
 
 #----------------------------------------------------------------------------
