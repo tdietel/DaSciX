@@ -1,4 +1,4 @@
-void read_geant(TString filename="/Users/tom/sw/BUILD/geant4_vmc.3.4/examples/E02/ExampleE02.root")
+void read_geant(TString filename="ExampleE02.root")
 {
 
   TFile* infile=new TFile(filename.Data());
