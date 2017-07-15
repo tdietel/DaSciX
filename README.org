@@ -24,7 +24,7 @@ give an overview how to install all required (and recommended)
 dependencies for various platforms. The main issue are the
 dependencies for ROOT, which are listed in the [[https://root.cern.ch/build-prerequisites][ROOT build documentation]].
 
-*** Ubuntu 17.04
+*** Ubuntu 16.04 / 17.04
 
 #+BEGIN_SRC sh
 sudo apt-get install git dpkg-dev cmake g++ gcc binutils \
