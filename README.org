@@ -196,14 +196,15 @@ make
 
 * Running Macros
 
-Once your environment has been set up and the dectector has been compiled you can run macros to perform the simulation.
+Once your environment has been set up and the detector has been compiled you can run macros to perform the simulation.
 
 #+BEGIN_SRC sh
 cd $DASCIX_DIR/macros
 root GeneratePrimariesPythia8.C
 #+END_SRC
 
-Now you have simulated the initial collision we can let Geant 4 take over the rest of the simulation. We will run these next few macros from within ROOT.
+Now you have simulated the initial collision we can let Geant 4 take over the rest of the simulation.
+We will run these next few macros from within ROOT. You should get a list of all the hits with details on each.
 
 #+BEGIN_SRC root
 .x loadlibs.C
