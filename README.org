@@ -169,7 +169,7 @@ export VGM_DIR=~/Geant4/install/lib/VGM-4.4.0/
 
 #+Begin_src sh
 cd ~/Geant4
-mkdir vmc-build && mkdir install
+mkdir vmc-build
 wget https://root.cern.ch/download/vmc/geant4_vmc.3.4.tar.gz
 tar -xvf geant4_vmc.3.4
 cd vmc-build
