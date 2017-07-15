@@ -1,27 +1,27 @@
 # Example script to set up the environment for Pythia and ROOT
 #
-# You must edit this file to reflect the locations of your 
+# You must edit this file to reflect the locations of your
 # software packages.
 #
-# Source this file with 
+# Source this file with
 #   . env.sh
-# 
+#
 
-export DASCIX_DIR=/Users/tom/teaching/DaSciX
+export DASCIX_DIR=~/DaSciX
 
 # installation directory for a few things
-INSTDIR=/Users/tom/sw/install
+INSTDIR=~/Geant4/install
 
 
 # Pythia 8
-export PYTHIA8=/Users/tom/sw/src/pythia8226
+export PYTHIA8=~/Root/pythia8226
 export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
 
 # ROOT
-. /Users/tom/sw/root/bin/thisroot.sh
+. ~/Root/root/bin/thisroot.sh
 
 # GEANT 4
-. ~/sw/geant4.10.03.p01-install/bin/geant4.sh
+. ~/Geant4/install/bin/geant4.sh
 
 
 # Virtual MC
@@ -31,8 +31,7 @@ export MTRoot_DIR=$INSTDIR/lib/MTRoot-3.4.0
 export Geant4VMC_DIR=$INSTDIR/lib/Geant4VMC-3.4.0
 
 # Mac OS X
-export DYLD_LIBRARY_PATH=$INSTDIR/lib
+# export DYLD_LIBRARY_PATH=$INSTDIR/lib
 
 # for Linux
-#export LD_LIBRARY_PATH=$INSTDIR/lib
-
+export LD_LIBRARY_PATH=$INSTDIR/lib
