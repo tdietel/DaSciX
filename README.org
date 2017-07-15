@@ -131,7 +131,6 @@ mkdir geant4-build && mkdir geant4-install
 cd geant4-build
 cmake -DCMAKE_INSTALL_PREFIX=$HOME/Geant4/geant4-install \
       -DGEANT4_INSTALL_DATA=ON \
-      -DGEANT4_BUILD_MULTITHREADED=ON \
       -DGEANT4_USE_OPENGL_X11=ON \
       ../geant4.10.03.p01
 make
