@@ -22,9 +22,7 @@ ROOT, Pythia and Geant depend on a number of other software packages,
 like compilers, libraries, build tools etc. This section attempts to
 give an overview how to install all required (and recommended)
 dependencies for various platforms. The main issue are the
-dependencies for ROOT, which are listed on
-[[https://root.cern.ch/build-prerequisites] [in the ROOT build
-documentation]].
+dependencies for ROOT, which are listed in the [[https://root.cern.ch/build-prerequisites][ROOT build documentation]].
 
 *** Ubuntu 17.04
 
@@ -204,7 +202,7 @@ cd $DASCIX_DIR/macros
 root GeneratePrimariesPythia8.C
 #+END_SRC
 
-Now you have simulated the initial collision we can let Geant4 take over the rest of the simulation. We will run these next few macros from within ROOT.
+Now you have simulated the initial collision we can let Geant 4 take over the rest of the simulation. We will run these next few macros from within ROOT.
 
 #+BEGIN_SRC root
 .x loadlibs.C
