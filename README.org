@@ -73,7 +73,7 @@ minimal instructions how to compile Pythia.
 You first have to decide where to install Pythia, and set the
 directories. This has to be repeated whenever you login, and should be
 added to your bash startup files. In this example, we install
-everything under sw in your home directory, but you can easily change
+everything under Root in your home directory, but you can easily change
 this if you prefer another location.
 #+Begin_src sh
 export PYTHIA8=~/Root/pythia8226

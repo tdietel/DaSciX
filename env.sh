@@ -18,10 +18,10 @@ export PYTHIA8=~/Root/pythia8226
 export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
 
 # ROOT
-. ~/Root/root/bin/thisroot.sh
+. ~/Root/root-build/bin/thisroot.sh
 
 # GEANT 4
-. ~/Geant4/install/bin/geant4.sh
+. $INSTDIR/bin/geant4.sh
 
 
 # Virtual MC
