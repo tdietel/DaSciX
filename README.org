@@ -185,7 +185,7 @@ make install
 
 The Geant4 detector model must be compiled:
 #+BEGIN_SRC sh
-cd DaSciX
+cd ~/DaSciX
 . env.sh
 mkdir Detector/build
 cd Detector/build
