@@ -123,6 +123,8 @@ make
 
 ** GEANT 4
 
+The [[http://geant4.web.cern.ch/geant4/UserDocumentation/UsersGuides/InstallationGuide/html/][Geant 4 installation page]] may be useful for extra help.
+
 #+Begin_src sh
 mkdir ~/Geant4 && cd ~/Geant4
 wget http://cern.ch/geant4/support/source/geant4.10.03.p01.tar.gz
@@ -142,7 +144,7 @@ make install
 
 ** VGM - Virtual Geometry Model
 
-This is needed to run Geant4 from within ROOT using virtual monte-carlo (vmc).
+This is needed to run Geant4 from within ROOT using virtual monte-carlo (vmc). For extra help check out the VGM README at vgm/doc/INSTALL in the unzipped directory.
 
 #+Begin_src sh
 cd ~/Geant4
@@ -159,8 +161,9 @@ make install
 
 ** Geant4 VMC - Virtual Monte-Carlo
 
-This is needed to run Geant4 from within ROOT. It depends on VGM so you will
-first need to set an environmet variable.
+This is needed to run Geant4 from within ROOT. It depends on VGM so you will first need to set an environmet variable.
+
+If you require further installation instructions check out the [[https://root.cern.ch/installing-geant4vmc][Geant 4 VMC installation page]].
 
 #+Begin_src sh
 export VGM_DIR=~/Geant4/install/lib/VGM-4.4.0/
