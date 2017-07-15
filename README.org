@@ -28,6 +28,7 @@ documentation]].
 
 *** Ubuntu 17.04
 
+#+BEGIN_SRC sh
 sudo apt-get install git dpkg-dev cmake g++ gcc binutils \
    libx11-dev libxpm-dev libxft-dev libxext-dev \
    gfortran libssl-dev libpcre3-dev \
@@ -36,6 +37,7 @@ sudo apt-get install git dpkg-dev cmake g++ gcc binutils \
    graphviz-dev libavahi-compat-libdnssd-dev \
    libldap2-dev python-dev libxml2-dev libkrb5-dev \
    libgsl0-dev libqt4-dev
+#+END_SRC
 
 
 *** Scientific Linux 6
@@ -106,11 +108,10 @@ You should download the sources and compile ROOT yourself. Minimal
 instructions are:
 #+BEGIN_SRC sh
 cd ~/Root
-ROOT_VERSION=v6.08.06
-curl -O https://root.cern.ch/download/root_$ROOT_VERSION.source.tar.gz
-tar -xvzf root_$ROOT_VERSION.source.tar.gz
-mkdir root-build
-cd root-build
+ROOT_VERSION=6.08.06
+curl -O https://root.cern.ch/download/root_v$ROOT_VERSION.source.tar.gz
+tar -xvzf root_v$ROOT_VERSION.source.tar.gz
+mkdir root-build && cd root-build
 cmake  -Dpythia8=ON \
        -DPYTHIA8_LIBRARY=$PYTHIA8/lib/libpythia8.so \
        -DPYTHIA8_INCLUDE_DIR=$PYTHIA8/include \
