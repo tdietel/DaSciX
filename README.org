@@ -208,4 +208,5 @@ Now you have simulated the initial collision we can let Geant 4 take over the re
 #+BEGIN_SRC root
 .x loadlibs.C
 .x run_g4.C
+.x read_geant.C
 #+END_SRC
