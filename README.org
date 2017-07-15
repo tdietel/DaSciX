@@ -74,9 +74,9 @@ You first have to decide where to install Pythia, and set the
 directories. This has to be repeated whenever you login, and should be
 added to your bash startup files. In this example, we install
 everything under sw in your home directory, but you can easily change
-this if you prefer another location. 
+this if you prefer another location.
 #+Begin_src sh
-export PYTHIA8=~/sw/pythia8226
+export PYTHIA8=~/Root/pythia8226
 export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
 #+END_SRC
 
@@ -84,18 +84,15 @@ Once the environment variables are set, you can use these commands to
 install Pythia 8 in the chosen location.
 
 #+BEGIN_SRC sh
+cd ~ && mkdir Root
 mkdir -p $PYTHIA8
 cd $PYTHIA8/..
-curl -O http://home.thep.lu.se/~torbjorn/pythia8/$(basename $PYTHIA8).tgz 
-tar -xvzf $(basename $PYTHIA8).tgz 
+curl -O http://home.thep.lu.se/~torbjorn/pythia8/$(basename $PYTHIA8).tgz
+tar -xvzf $(basename $PYTHIA8).tgz
 cd $PYTHIA8
 ./configure --enable-shared
 make
 #+END_SRC
-
-** GEANT 4 
-
-Instructions to follow.
 
 ** ROOT
 
@@ -103,16 +100,17 @@ The [[http://root.cern.ch][ROOT homepage]] provides comprehensive documentation,
 and precompiled binaries for ROOT. However, precompiled binaries - including the
 ones you would usually find with your package managers such as
 homebrew, apt or yum - usually do not include the interfaces for
-Pythia or Geant and should therefore be avoided. 
+Pythia or Geant and should therefore be avoided.
 
 You should download the sources and compile ROOT yourself. Minimal
 instructions are:
 #+BEGIN_SRC sh
+cd ~/Root
 ROOT_VERSION=v6.08.06
 curl -O https://root.cern.ch/download/root_$ROOT_VERSION.source.tar.gz
 tar -xvzf root_$ROOT_VERSION.source.tar.gz
-mkdir build
-cd build
+mkdir root-build
+cd root-build
 cmake  -Dpythia8=ON \
        -DPYTHIA8_LIBRARY=$PYTHIA8/lib/libpythia8.so \
        -DPYTHIA8_INCLUDE_DIR=$PYTHIA8/include \
@@ -122,13 +120,89 @@ make
 #+END_SRC
 
 
+** GEANT 4
+
+#+Begin_src sh
+mkdir ~/Geant4 && cd ~/Geant4
+wget http://cern.ch/geant4/support/source/geant4.10.03.p01.tar.gz
+tar -xvf geant4.10.03.p01.tar.gz
+mkdir geant4-build && mkdir geant4-install
+cd geant4-build
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/Geant4/geant4-install \
+      -DGEANT4_INSTALL_DATA=ON \
+      -DGEANT4_BUILD_MULTITHREADED=ON \
+      -DGEANT4_USE_OPENGL_X11=ON \
+      ../geant4.10.03.p01
+make
+make install
+. ../geant4-install/bin/geant4.sh
+#+END_SRC
+
+
+** VGM - Virtual Geometry Model
+
+This is needed to run Geant4 from within ROOT using virtual monte-carlo (vmc).
+
+#+Begin_src sh
+cd ~/Geant4
+mkdir vgm-build && mkdir install
+wget http://ivana.home.cern.ch/ivana/vgm.4.4.tar.gz
+tar -xvf vgm.4.4.tar.gz
+cd vgm-build
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/Geant4/install \
+      ../vgm.4.4
+make
+make install
+#+END_SRC
+
+
+** Geant4 VMC - Virtual Monte-Carlo
+
+This is needed to run Geant4 from within ROOT. It depends on VGM so you will
+first need to set an environmet variable.
+
+#+Begin_src sh
+export VGM_DIR=~/Geant4/install/lib/VGM-4.4.0/
+#+END_SRC
+
+#+Begin_src sh
+cd ~/Geant4
+mkdir vmc-build && mkdir install
+wget https://root.cern.ch/download/vmc/geant4_vmc.3.4.tar.gz
+tar -xvf geant4_vmc.3.4
+cd vmc-build
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/Geant4/install \
+      -DGeant4VMC_USE_VGM=ON \
+      ../geant4_vmc.3.4
+make
+make install
+#+END_SRC
+
 
 * Compilation
 
 The Geant4 detector model must be compiled:
 #+BEGIN_SRC sh
+cd DaSciX
+. env.sh
 mkdir Detector/build
 cd Detector/build
 cmake ../src/
 make
+#+END_SRC
+
+* Running Macros
+
+Once your environment has been set up and the dectector has been compiled you can run macros to perform the simulation.
+
+#+BEGIN_SRC sh
+cd $DASCIX_DIR/macros
+root GeneratePrimariesPythia8.C
+#+END_SRC
+
+Now you have simulated the initial collision we can let Geant4 take over the rest of the simulation. We will run these next few macros from within ROOT.
+
+#+BEGIN_SRC root
+.x loadlibs.C
+.x run_g4.C
 #+END_SRC
