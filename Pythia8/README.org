@@ -1,5 +1,0 @@
-An Explanation of Progress:
-
-We have edited the example macro, it now collides two protons at 14 TeV, and only generates jets with a minimum of 50 GeV. It generates a .tx file with the following contents: ID, Particle PDG code, proper lifetime, status (decayed or not), momentum: Px, Py, Pz, Vertex position: Vx, Vy, Vz.
-
-Our next mission is to filter a subset of particles to send to Geant, using vertex position, momentum and time to ascertain whether a particle made it out of the beam pipe and into the detector.

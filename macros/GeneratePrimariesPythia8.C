@@ -70,7 +70,7 @@ void GeneratePrimariesPythia8()
    //pythia8->ReadString("Event:list(showScaleAndVertex) = true");
 
 // Initialize
-   pythia8->Initialize(2212 /* e- */, 2212 /* e+ */, 14000. /* GeV */);
+   pythia8->Initialize(2212 /* p */, 2212 /* p */, 14000. /* GeV */);
 
   pythia8->GenerateEvent();
   pythia8->EventListing();

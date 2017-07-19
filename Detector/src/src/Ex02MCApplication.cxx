@@ -189,9 +189,9 @@ void Ex02MCApplication::RunMC(Int_t nofEvents)
 /// Run MC.
 /// \param nofEvents Number of events to be processed
 
-  gMC->ProcessRun(1);
+  // gMC->ProcessRun(1);
 
-  // gMC->ProcessRun(nofEvents);
+  gMC->ProcessRun(nofEvents);
   FinishRun();
 }
 

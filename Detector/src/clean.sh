@@ -1,2 +1,0 @@
-rm *.stdout
-rm *.stderr

@@ -1,9 +1,9 @@
-void read_geant(TString filename="ExampleE02.root")
+void read_geant(TString filename="Example02_1.root")
 {
 
   TFile* infile=new TFile(filename.Data());
 
-  TTree* tr = (TTree*)infile->Get("ExampleE02");
+  TTree* tr = (TTree*)infile->Get("Example02");
 
   tr->Print();
 
@@ -16,8 +16,8 @@ void read_geant(TString filename="ExampleE02.root")
   // set up branch for MC stack
   Ex02MCStack* stack = new Ex02MCStack;
   tr->SetBranchAddress("stack",&stack);
-  
-  
+
+
   // loop over events
   for (int ev=0; ev<tr->GetEntries(); ev++) {
 
@@ -40,7 +40,7 @@ void read_geant(TString filename="ExampleE02.root")
 
       hit->Print();
     }
-    
+
   }
-  
+
 }
