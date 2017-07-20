@@ -212,3 +212,12 @@ We will run these next few macros from within ROOT. You should get a list of all
 .x run_g4.C
 .x read_geant.C
 #+END_SRC
+
+Alternatively, should you wish to use the R statistical package, for machine learning or other data analysis algorithms, the following sequence of commands can be ran in ROOT, in order to produce a CSV file ("hits.csv"), which will contain minimal details about detector hits:
+
+#+BEGIN_SRC root
+.x loadlibs.C
+.x run_g4.C
+.x read_geant_2.C
+.x csv.C
+#+END_SRC
