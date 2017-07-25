@@ -7,6 +7,7 @@ using namespace std;
 void csv()
 {
 
+
   ifstream myfile;
   myfile.open ("out.txt");
 
@@ -29,6 +30,45 @@ void csv()
 	qq+=16;
 	string pos = line.substr (qq);
 	boost::erase_all(pos, ")");
+
+	string c;
+	c = chamberNb;
+
+	if (c.find('0') == std::string::npos &&
+        c.find('1') == std::string::npos &&
+        c.find('2') == std::string::npos &&
+        c.find('3') == std::string::npos &&
+        c.find('4') == std::string::npos &&
+        c.find('5') == std::string::npos &&
+        c.find('6') == std::string::npos &&
+        c.find('7') == std::string::npos &&
+        c.find('8') == std::string::npos &&
+        c.find('9') == std::string::npos){
+	pp+=1;
+	chamberNb = line.substr (26,1);
+	energyDeposit = line.substr (51,pp);
+	pos = line.substr (qq);
+	boost::erase_all(pos, ")");
+	}
+
+        c = chamberNb;
+
+	if (c.find('0') == std::string::npos &&
+        c.find('1') == std::string::npos &&
+        c.find('2') == std::string::npos &&
+        c.find('3') == std::string::npos &&
+        c.find('4') == std::string::npos &&
+        c.find('5') == std::string::npos &&
+        c.find('6') == std::string::npos &&
+        c.find('7') == std::string::npos &&
+        c.find('8') == std::string::npos &&
+        c.find('9') == std::string::npos){
+	pp+=1;
+	chamberNb = line.substr (25,1);
+	energyDeposit = line.substr (50,pp);
+	pos = line.substr (qq);
+	boost::erase_all(pos, ")");
+	}
 	
 	myotherfile << trackID << ", " << chamberNb << ", " << energyDeposit << ", " << pos << "\n";
 	}
