@@ -1,0 +1,131 @@
+_STATE VECTOR EQUATION:_
+
+x_k = (F_k-1 * x_k-1) + w_k-1
+
+#Variables:
+
+* STATE VECTOR (CONTAINS TRACK PARAMS AT PLANE K):
+	x_k = (horiz_pos, track_slope, E)
+
+* F MATRIX (PROPAGATOR FROM ONE LAYER TO NEXT):
+	F_k-1
+F=
+[1	1	0
+ 0	1	0
+ 0	0	1]
+
+**Not sure about this, in their example they say that the second element in the position vector is transverse velocity, and therefore the f matrix had a form like this, we would probably have to change this according to the position vector we're using, which - as far as I know - does not include velocity**
+
+* STATE VECTOR AT PREVIOUS PLANE (k-1):
+	x_k-1
+
+* RANDOM VARIABLE (MULTIPLE SCATTERING):
+	w_k-1
+
+#At each instrument layer, we have:
+
+	* Projected state vector
+	* "Filtered" state vector
+	* "Smoothed" state vector
+
+#Considering the measurement process:
+
+_MEASUREMENT EQUATION:_
+
+m_k = (H_x * x_k) + e_k
+
+#Variables:
+
+* MEASUREMENT MADE:
+	m_k (x,y,z,Energy)
+
+* MEASUREMENT MATRIX:
+	H
+
+* MEASUREMENT ERROR:
+	e_k
+
+**Dimensions of x and m may not be the same**
+
+_RANDOM VARIABLES -- MULTIPLE SCATTERING (w_k) & MEASUREMENT ERROR (e_k):_
+
+#Variables:
+
+*Q_k = cov{w_k}
+**Assuming the track's slope is equal to the multiple scattering angle, the (2,2) element of Q is equal to the multiple scattering variance for the track energy, as given by the Particle Properties Data Book (PDG?)**
+
+* V_k = G_k^-1 = cov{e_k}
+
+* C_k = cov{x_k-x_k_true}
+
+__PREDICTION, FILTERING, SMOOTHING:__
+
+_THE FILTERING EQUATIONS:_
+
+#Predict position, using propogator and position on previous plane:
+
+x_k_projected = (F_k-1 * x_k) - 1
+
+#Predict next covariance matrix, by adding to the predicted covariance the effects of multiple scattering that occurred at plane k-1:
+
+C_k_projected = (F_k-1 * C_k-1 * F_k-1^T) + Q_k-1
+
+**The above equations express the propagation, according to F, of the position and errors, with the addition of multiple scattering covariance**
+
+_REFINE COVARIANCE MATRIX BEFORE FILTERING:_
+
+C_k = [ (C_k_projected)^-1 + (H_k^T * G_k * H_k))^-1
+
+**G_k is the inverse of the measurement error covariance matrix V_k**
+
+_USING REFINED C_k, calculate x_k:_
+
+x_k = C_k * [((C_k_projected)^-1 * x_k_projected) + (H_k^T * G_k * m_k)]
+
+**The size of G_k controls how heavily the measurement is weighted, if we had very large measurement errors, G_k would be nearly zero, and the error matrix would just be the previous error matrix projected to the next plane**
+
+
+_SMOOTHING EQUATIONS:_
+
+#Auxiliary matrix A:
+
+A_k = (C_k * F_k^T) * (C_k+1_projected)^-1
+
+#Then, smoothed position and covariance estimates are:
+
+* SMOOTHED POSITION:
+
+	x_k_smooth = x_k + ( A_k * (x_k+1_smooth - x_k+1_projected))
+
+*SMOOTHED COVARIANCE:
+
+	C_k_smooth = C_k + ((A_k * (C_k+1_smooth - C_k+1_projected)) * A_k^T)
+
+
+___PRACTICAL IMPLEMENTATION___
+
+1. First define the state vector x_0 and covariance C_0
+
+2. For each plane k (each chamber boundary in our case):
+
+	* Project from the previous plane:
+
+		x_k_projected = F_k-1 * x_k-1
+		C_k_projected = (F_k-1 * C_k-1 * F_k-1^T) + Q_k-1
+
+	* Filter the estimates:
+
+		C_k = [(C_k_projected)^-1 + (H_k^T * G_k * H_k)]^-1
+		x_k = C_k * [((C_k_projected)^-1 * x_k_projected) + (H_k^T * G_k * m_k)]
+
+3. Starting at the second to last plane and working back up:
+
+	* Smooth the estimates:
+
+		A_k = (C_k * F_k^T) * (C_k+1_projected)^-1
+		x_k_smooth = x_k + (A_k * (x_k+1_smooth - x_k+1_projected))
+		C_k_smooth = C_k + (A_k * ((C_k+1_smooth - C_k+1_projected) * A_k^T))
+
+**None of the C matrices depend on the data, they only depend on the Q and V matrices for each plane, this means you can pre-calculate the C's**
+
+***Finally, they say that the Q matrices depend on electron energy, and if the electron energy changes, the C's have to be recalculated... Not quite sure what they mean by that, perhaps the electron energy is the Energy a particle still possesses when it crosses a specific plane? Since this paper was primarily interested in measuring electron tracks, it seems...***
