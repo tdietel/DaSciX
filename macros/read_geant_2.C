@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-void read_geant_2(TString filename="Example02_1.root")
+void read_geant_2(TString filename="Example02.root")
 {
 
   std::ofstream out("out.txt");
