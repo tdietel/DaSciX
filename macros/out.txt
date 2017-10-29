@@ -1,0 +1,1875 @@
+event 0
+event 0
+event 0
+event 0
+event 0
+event 0
+Track ID:  0
+Primary    
+Number of daughters: 1
+
+Track ID:  1
+Primary    
+Number of daughters: 0
+
+Track ID:  2
+Primary    
+Number of daughters: 0
+
+Track ID:  3
+Primary    
+Number of daughters: 0
+
+Track ID:  4
+Primary    
+Number of daughters: 1
+
+Track ID:  5
+Primary    
+Number of daughters: 0
+
+Track ID:  6
+Primary    
+Number of daughters: 0
+
+Track ID:  7
+Primary    
+Number of daughters: 1
+
+Track ID:  8
+Primary    
+Number of daughters: 1
+
+Track ID:  9
+Primary    
+Number of daughters: 1
+
+Track ID:  10
+Primary    
+Number of daughters: 0
+
+Track ID:  11
+Primary    
+Number of daughters: 1
+
+Track ID:  12
+Primary    
+Number of daughters: 0
+
+Track ID:  13
+Primary    
+Number of daughters: 1
+
+Track ID:  14
+Primary    
+Number of daughters: 1
+
+Track ID:  15
+Primary    
+Number of daughters: 0
+
+Track ID:  16
+Primary    
+Number of daughters: 36
+
+Track ID:  17
+Primary    
+Number of daughters: 2
+
+Track ID:  18
+Primary    
+Number of daughters: 0
+
+Track ID:  19
+Primary    
+Number of daughters: 0
+
+Track ID:  20
+Primary    
+Number of daughters: 0
+
+Track ID:  21
+Primary    
+Number of daughters: 1
+
+Track ID:  22
+Primary    
+Number of daughters: 0
+
+Track ID:  23
+Primary    
+Number of daughters: 1
+
+Track ID:  24
+Primary    
+Number of daughters: 1
+
+Track ID:  25
+Primary    
+Number of daughters: 0
+
+Track ID:  26
+Primary    
+Number of daughters: 1
+
+Track ID:  27
+Primary    
+Number of daughters: 0
+
+Track ID:  28
+Primary    
+Number of daughters: 0
+
+Track ID:  29
+Primary    
+Number of daughters: 0
+
+Track ID:  30
+Primary    
+Number of daughters: 0
+
+Track ID:  31
+Primary    
+Number of daughters: 0
+
+Track ID:  32
+Primary    
+Number of daughters: 0
+
+Track ID:  33
+Primary    
+Number of daughters: 0
+
+Track ID:  34
+Primary    
+Number of daughters: 1
+
+Track ID:  35
+Primary    
+Number of daughters: 1
+
+Track ID:  36
+Primary    
+Number of daughters: 0
+
+Track ID:  37
+Primary    
+Number of daughters: 0
+
+Track ID:  38
+Primary    
+Number of daughters: 0
+
+Track ID:  39
+Primary    
+Number of daughters: 1
+
+Track ID:  40
+Primary    
+Number of daughters: 0
+
+Track ID:  41
+Primary    
+Number of daughters: 0
+
+Track ID:  42
+Primary    
+Number of daughters: 0
+
+Track ID:  43
+Primary    
+Number of daughters: 0
+
+Track ID:  44
+Primary    
+Number of daughters: 0
+
+Track ID:  45
+Primary    
+Number of daughters: 0
+
+Track ID:  46
+Primary    
+Number of daughters: 0
+
+Track ID:  47
+Primary    
+Number of daughters: 0
+
+Track ID:  48
+Primary    
+Number of daughters: 1
+
+Track ID:  49
+Primary    
+Number of daughters: 0
+
+Track ID:  50
+Primary    
+Number of daughters: 2
+
+Track ID:  51
+Primary    
+Number of daughters: 0
+
+Track ID:  52
+Primary    
+Number of daughters: 0
+
+Track ID:  53
+Primary    
+Number of daughters: 0
+
+Track ID:  54
+Primary    
+Number of daughters: 0
+
+Track ID:  55
+Primary    
+Number of daughters: 0
+
+Track ID:  56
+Primary    
+Number of daughters: 1
+
+Track ID:  57
+Primary    
+Number of daughters: 2
+
+Track ID:  58
+Primary    
+Number of daughters: 0
+
+Track ID:  59
+Primary    
+Number of daughters: 0
+
+Track ID:  60
+Primary    
+Number of daughters: 0
+
+Track ID:  61
+Primary    
+Number of daughters: 2
+
+Track ID:  62
+Primary    
+Number of daughters: 0
+
+Track ID:  63
+Primary    
+Number of daughters: 0
+
+Track ID:  64
+Primary    
+Number of daughters: 2
+
+Track ID:  65
+Primary    
+Number of daughters: 0
+
+Track ID:  66
+Primary    
+Number of daughters: 1
+
+Track ID:  67
+Primary    
+Number of daughters: 0
+
+Track ID:  68
+Primary    
+Number of daughters: 0
+
+Track ID:  69
+Primary    
+Number of daughters: 2
+
+Track ID:  70
+Primary    
+Number of daughters: 0
+
+Track ID:  71
+Primary    
+Number of daughters: 0
+
+Track ID:  72
+Primary    
+Number of daughters: 0
+
+Track ID:  73
+Primary    
+Number of daughters: 0
+
+Track ID:  74
+Primary    
+Number of daughters: 1
+
+Track ID:  75
+Primary    
+Number of daughters: 2
+
+Track ID:  76
+Primary    
+Number of daughters: 0
+
+Track ID:  77
+Primary    
+Number of daughters: 0
+
+Track ID:  78
+Primary    
+Number of daughters: 0
+
+Track ID:  79
+Primary    
+Number of daughters: 0
+
+Track ID:  80
+Primary    
+Number of daughters: 0
+
+Track ID:  81
+Primary    
+Number of daughters: 0
+
+Track ID:  82
+Primary    
+Number of daughters: 1
+
+Track ID:  83
+Primary    
+Number of daughters: 0
+
+Track ID:  84
+Primary    
+Number of daughters: 0
+
+Track ID:  85
+Primary    
+Number of daughters: 0
+
+Track ID:  86
+Primary    
+Number of daughters: 2
+
+Track ID:  87
+Primary    
+Number of daughters: 0
+
+Track ID:  88
+Primary    
+Number of daughters: 0
+
+Track ID:  89
+Primary    
+Number of daughters: 0
+
+Track ID:  90
+Primary    
+Number of daughters: 1
+
+Track ID:  91
+Primary    
+Number of daughters: 0
+
+Track ID:  92
+Primary    
+Number of daughters: 0
+
+Track ID:  93
+Primary    
+Number of daughters: 0
+
+Track ID:  94
+Primary    
+Number of daughters: 0
+
+Track ID:  95
+Primary    
+Number of daughters: 2
+
+Track ID:  96
+Primary    
+Number of daughters: 1
+
+Track ID:  97
+Primary    
+Number of daughters: 0
+
+Track ID:  98
+Primary    
+Number of daughters: 0
+
+Track ID:  99
+Primary    
+Number of daughters: 1
+
+Track ID:  100
+Primary    
+Number of daughters: 0
+
+Track ID:  101
+Primary    
+Number of daughters: 0
+
+Track ID:  102
+Primary    
+Number of daughters: 1
+
+Track ID:  103
+Primary    
+Number of daughters: 0
+
+Track ID:  104
+Primary    
+Number of daughters: 2
+
+Track ID:  105
+Primary    
+Number of daughters: 0
+
+Track ID:  106
+Primary    
+Number of daughters: 1
+
+Track ID:  107
+Primary    
+Number of daughters: 0
+
+Track ID:  108
+Primary    
+Number of daughters: 1
+
+Track ID:  109
+Primary    
+Number of daughters: 0
+
+Track ID:  110
+Primary    
+Number of daughters: 1
+
+Track ID:  111
+Primary    
+Number of daughters: 0
+
+Track ID:  112
+Primary    
+Number of daughters: 0
+
+Track ID:  113
+Primary    
+Number of daughters: 0
+
+Track ID:  114
+Primary    
+Number of daughters: 0
+
+Track ID:  115
+Primary    
+Number of daughters: 1
+
+Track ID:  116
+Primary    
+Number of daughters: 1
+
+Track ID:  117
+Primary    
+Number of daughters: 1
+
+Track ID:  118
+Primary    
+Number of daughters: 0
+
+Track ID:  119
+Primary    
+Number of daughters: 0
+
+Track ID:  120
+Primary    
+Number of daughters: 0
+
+Track ID:  121
+Primary    
+Number of daughters: 0
+
+Track ID:  122
+Primary    
+Number of daughters: 1
+
+Track ID:  123
+Primary    
+Number of daughters: 0
+
+Track ID:  124
+Primary    
+Number of daughters: 1
+
+Track ID:  125
+Primary    
+Number of daughters: 0
+
+Track ID:  126
+Primary    
+Number of daughters: 0
+
+Track ID:  127
+Primary    
+Number of daughters: 1
+
+Track ID:  128
+Primary    
+Number of daughters: 0
+
+Track ID:  129
+Primary    
+Number of daughters: 0
+
+Track ID:  130
+Primary    
+Number of daughters: 1
+
+Track ID:  131
+Primary    
+Number of daughters: 0
+
+Track ID:  132
+Primary    
+Number of daughters: 2
+
+Track ID:  133
+Primary    
+Number of daughters: 0
+
+Track ID:  134
+Primary    
+Number of daughters: 0
+
+Track ID:  135
+Primary    
+Number of daughters: 0
+
+Track ID:  136
+Primary    
+Number of daughters: 0
+
+Track ID:  137
+Primary    
+Number of daughters: 0
+
+Track ID:  138
+Primary    
+Number of daughters: 0
+
+Track ID:  139
+Primary    
+Number of daughters: 0
+
+Track ID:  140
+Primary    
+Number of daughters: 0
+
+Track ID:  141
+Primary    
+Number of daughters: 0
+
+Track ID:  142
+Primary    
+Number of daughters: 0
+
+Track ID:  143
+Primary    
+Number of daughters: 0
+
+Track ID:  144
+Primary    
+Number of daughters: 0
+
+Track ID:  145
+Primary    
+Number of daughters: 0
+
+Track ID:  146
+Primary    
+Number of daughters: 0
+
+Track ID:  147
+Primary    
+Number of daughters: 0
+
+Track ID:  148
+Primary    
+Number of daughters: 0
+
+Track ID:  149
+Primary    
+Number of daughters: 0
+
+Track ID:  150
+Primary    
+Number of daughters: 0
+
+Track ID:  151
+Primary    
+Number of daughters: 0
+
+Track ID:  152
+Primary    
+Number of daughters: 0
+
+Track ID:  153
+Primary    
+Number of daughters: 0
+
+Track ID:  154
+Primary    
+Number of daughters: 0
+
+Track ID:  155
+Primary    
+Number of daughters: 0
+
+Track ID:  156
+Primary    
+Number of daughters: 0
+
+Track ID:  157
+Primary    
+Number of daughters: 0
+
+Track ID:  158
+Primary    
+Number of daughters: 0
+
+Track ID:  159
+Primary    
+Number of daughters: 0
+
+Track ID:  160
+Primary    
+Number of daughters: 0
+
+Track ID:  161
+Primary    
+Number of daughters: 0
+
+Track ID:  162
+Primary    
+Number of daughters: 0
+
+Track ID:  163
+Primary    
+Number of daughters: 0
+
+Track ID:  164
+Primary    
+Number of daughters: 0
+
+Track ID:  165
+Primary    
+Number of daughters: 0
+
+Track ID:  166
+Primary    
+Number of daughters: 1
+
+Track ID:  167
+Primary    
+Number of daughters: 0
+
+Track ID:  168
+Primary    
+Number of daughters: 0
+
+Track ID:  169
+Primary    
+Number of daughters: 0
+
+Track ID:  170
+Primary    
+Number of daughters: 0
+
+Track ID:  171
+Primary    
+Number of daughters: 0
+
+Track ID:  172
+Primary    
+Number of daughters: 0
+
+Track ID:  173
+Primary    
+Number of daughters: 0
+
+Track ID:  174
+Primary    
+Number of daughters: 0
+
+Track ID:  175
+Primary    
+Number of daughters: 0
+
+Track ID:  176
+Primary    
+Number of daughters: 0
+
+Track ID:  177
+Primary    
+Number of daughters: 0
+
+Track ID:  178
+Primary    
+Number of daughters: 0
+
+Track ID:  179
+Primary    
+Number of daughters: 0
+
+Track ID:  180
+Primary    
+Number of daughters: 0
+
+Track ID:  181
+Primary    
+Number of daughters: 0
+
+Track ID:  182
+Primary    
+Number of daughters: 0
+
+Track ID:  183
+Primary    
+Number of daughters: 0
+
+Track ID:  184
+Primary    
+Number of daughters: 0
+
+Track ID:  185
+Primary    
+Number of daughters: 0
+
+Track ID:  186
+Primary    
+Number of daughters: 0
+
+Track ID:  187
+Primary    
+Number of daughters: 0
+
+Track ID:  188
+Primary    
+Number of daughters: 0
+
+Track ID:  189
+Primary    
+Number of daughters: 0
+
+Track ID:  190
+Primary    
+Number of daughters: 0
+
+Track ID:  191
+Primary    
+Number of daughters: 0
+
+Track ID:  192
+Primary    
+Number of daughters: 0
+
+Track ID:  193
+Primary    
+Number of daughters: 0
+
+Track ID:  194
+Primary    
+Number of daughters: 0
+
+Track ID:  195
+Primary    
+Number of daughters: 0
+
+Track ID:  196
+Primary    
+Number of daughters: 1
+
+Track ID:  197
+Primary    
+Number of daughters: 0
+
+Track ID:  198
+Primary    
+Number of daughters: 0
+
+Track ID:  199
+Primary    
+Number of daughters: 2
+
+Track ID:  200
+Primary    
+Number of daughters: 1
+
+Track ID:  201
+Primary    
+Number of daughters: 2
+
+Track ID:  202
+Primary    
+Number of daughters: 0
+
+Track ID:  203
+Primary    
+Number of daughters: 0
+
+Track ID:  204
+Primary    
+Number of daughters: 0
+
+Track ID:  205
+Primary    
+Number of daughters: 2
+
+Track ID:  206
+Primary    
+Number of daughters: 0
+
+Track ID:  207
+Primary    
+Number of daughters: 0
+
+Track ID:  208
+Primary    
+Number of daughters: 0
+
+Track ID:  209
+Primary    
+Number of daughters: 0
+
+Track ID:  210
+Primary    
+Number of daughters: 0
+
+Track ID:  211
+Primary    
+Number of daughters: 0
+
+Track ID:  212
+Primary    
+Number of daughters: 0
+
+Track ID:  213
+Primary    
+Number of daughters: 0
+
+Track ID:  214
+Primary    
+Number of daughters: 0
+
+Track ID:  215
+Primary    
+Number of daughters: 0
+
+Track ID:  216
+Primary    
+Number of daughters: 0
+
+Track ID:  217
+Primary    
+Number of daughters: 0
+
+Track ID:  218
+Primary    
+Number of daughters: 0
+
+Track ID:  219
+Primary    
+Number of daughters: 0
+
+Track ID:  220
+Primary    
+Number of daughters: 0
+
+Track ID:  221
+Primary    
+Number of daughters: 0
+
+Track ID:  222
+Primary    
+Number of daughters: 0
+
+Track ID:  223
+Primary    
+Number of daughters: 0
+
+Track ID:  224
+Primary    
+Number of daughters: 0
+
+Track ID:  225
+Primary    
+Number of daughters: 0
+
+Track ID:  226
+Primary    
+Number of daughters: 0
+
+Track ID:  227
+Primary    
+Number of daughters: 0
+
+Track ID:  228
+Primary    
+Number of daughters: 0
+
+Track ID:  229
+Primary    
+Number of daughters: 0
+
+Track ID:  230
+Primary    
+Number of daughters: 0
+
+Track ID:  231
+Primary    
+Number of daughters: 0
+
+Track ID:  232
+Primary    
+Number of daughters: 0
+
+Track ID:  233
+Primary    
+Number of daughters: 0
+
+Track ID:  234
+Primary    
+Number of daughters: 0
+
+Track ID:  235
+Primary    
+Number of daughters: 0
+
+Track ID:  236
+Primary    
+Number of daughters: 0
+
+Track ID:  237
+Primary    
+Number of daughters: 0
+
+Track ID:  238
+Primary    
+Number of daughters: 0
+
+Track ID:  239
+Primary    
+Number of daughters: 0
+
+Track ID:  240
+Primary    
+Number of daughters: 0
+
+Track ID:  241
+Primary    
+Number of daughters: 1
+
+Track ID:  242
+Primary    
+Number of daughters: 0
+
+Track ID:  243
+Primary    
+Number of daughters: 0
+
+Track ID:  244
+Primary    
+Number of daughters: 0
+
+Track ID:  245
+Primary    
+Number of daughters: 0
+
+Track ID:  246
+Primary    
+Number of daughters: 0
+
+Track ID:  247
+Primary    
+Number of daughters: 0
+
+Track ID:  248
+Primary    
+Number of daughters: 0
+
+Track ID:  249
+Primary    
+Number of daughters: 0
+
+Track ID:  250
+Primary    
+Number of daughters: 0
+
+Track ID:  251
+Primary    
+Number of daughters: 0
+
+Track ID:  252
+Primary    
+Number of daughters: 5
+
+Track ID:  253
+Primary    
+Number of daughters: 0
+
+Track ID:  254
+Primary    
+Number of daughters: 0
+
+Track ID:  255
+Primary    
+Number of daughters: 0
+
+Track ID:  256
+Primary    
+Number of daughters: 0
+
+Track ID:  257
+Primary    
+Number of daughters: 0
+
+Track ID:  258
+Primary    
+Number of daughters: 0
+
+Track ID:  259
+Primary    
+Number of daughters: 0
+
+Track ID:  260
+Primary    
+Number of daughters: 0
+
+Track ID:  261
+Primary    
+Number of daughters: 0
+
+Track ID:  262
+Primary    
+Number of daughters: 0
+
+Track ID:  263
+Primary    
+Number of daughters: 0
+
+Track ID:  264
+Primary    
+Number of daughters: 0
+
+Track ID:  265
+Primary    
+Number of daughters: 0
+
+Track ID:  266
+Primary    
+Number of daughters: 0
+
+Track ID:  267
+Primary    
+Number of daughters: 0
+
+Track ID:  268
+Primary    
+Number of daughters: 0
+
+Track ID:  269
+Primary    
+Number of daughters: 0
+
+Track ID:  270
+Primary    
+Number of daughters: 0
+
+Track ID:  271
+Primary    
+Number of daughters: 0
+
+Track ID:  272
+Primary    
+Number of daughters: 0
+
+Track ID:  273
+Primary    
+Number of daughters: 0
+
+Track ID:  274
+Primary    
+Number of daughters: 0
+
+Track ID:  275
+Primary    
+Number of daughters: 0
+
+Track ID:  276
+Primary    
+Number of daughters: 0
+
+Track ID:  277
+Primary    
+Number of daughters: 0
+
+Track ID:  278
+Primary    
+Number of daughters: 0
+
+Track ID:  279
+Primary    
+Number of daughters: 0
+
+Track ID:  280
+Primary    
+Number of daughters: 0
+
+Track ID:  281
+Primary    
+Number of daughters: 0
+
+Track ID:  282
+Primary    
+Number of daughters: 0
+
+Track ID:  283
+Primary    
+Number of daughters: 0
+
+Track ID:  284
+Primary    
+Number of daughters: 0
+
+Track ID:  285
+Mother:    e+  with ID: 252
+Number of daughters: 0
+
+Track ID:  286
+Mother:    e+  with ID: 252
+Number of daughters: 0
+
+Track ID:  287
+Mother:    e+  with ID: 252
+Number of daughters: 0
+
+Track ID:  288
+Mother:    e+  with ID: 252
+Number of daughters: 1
+
+Track ID:  289
+Mother:    gamma  with ID: 288
+Number of daughters: 0
+
+Track ID:  290
+Mother:    e+  with ID: 252
+Number of daughters: 0
+
+Track ID:  291
+Mother:    pi-  with ID: 241
+Number of daughters: 0
+
+Track ID:  292
+Mother:    pi-  with ID: 205
+Number of daughters: 0
+
+Track ID:  293
+Mother:    pi-  with ID: 205
+Number of daughters: 0
+
+Track ID:  294
+Mother:    pi-  with ID: 201
+Number of daughters: 3
+
+Track ID:  295
+Mother:    e-  with ID: 294
+Number of daughters: 0
+
+Track ID:  296
+Mother:    e-  with ID: 294
+Number of daughters: 0
+
+Track ID:  297
+Mother:    pi-  with ID: 201
+Number of daughters: 0
+
+Track ID:  298
+Mother:    e-  with ID: 294
+Number of daughters: 1
+
+Track ID:  299
+Mother:    pi+  with ID: 200
+Number of daughters: 0
+
+Track ID:  300
+Mother:    gamma  with ID: 298
+Number of daughters: 0
+
+Track ID:  301
+Mother:    pi-  with ID: 199
+Number of daughters: 0
+
+Track ID:  302
+Mother:    pi-  with ID: 199
+Number of daughters: 0
+
+Track ID:  303
+Mother:    pi+  with ID: 196
+Number of daughters: 0
+
+Track ID:  304
+Mother:    pi+  with ID: 166
+Number of daughters: 0
+
+Track ID:  305
+Mother:    K_S0  with ID: 132
+Number of daughters: 2
+
+Track ID:  306
+Mother:    K_S0  with ID: 132
+Number of daughters: 2
+
+Track ID:  307
+Mother:    pi+  with ID: 130
+Number of daughters: 0
+
+Track ID:  308
+Mother:    pi0  with ID: 306
+Number of daughters: 0
+
+Track ID:  309
+Mother:    pi0  with ID: 306
+Number of daughters: 0
+
+Track ID:  310
+Mother:    pi0  with ID: 305
+Number of daughters: 0
+
+Track ID:  311
+Mother:    pi0  with ID: 305
+Number of daughters: 0
+
+Track ID:  312
+Mother:    antiproton  with ID: 127
+Number of daughters: 0
+
+Track ID:  313
+Mother:    pi+  with ID: 124
+Number of daughters: 0
+
+Track ID:  314
+Mother:    pi-  with ID: 122
+Number of daughters: 0
+
+Track ID:  315
+Mother:    proton  with ID: 117
+Number of daughters: 0
+
+Track ID:  316
+Mother:    pi+  with ID: 116
+Number of daughters: 0
+
+Track ID:  317
+Mother:    pi+  with ID: 115
+Number of daughters: 0
+
+Track ID:  318
+Mother:    pi+  with ID: 110
+Number of daughters: 0
+
+Track ID:  319
+Mother:    pi+  with ID: 108
+Number of daughters: 0
+
+Track ID:  320
+Mother:    pi-  with ID: 106
+Number of daughters: 0
+
+Track ID:  321
+Mother:    pi-  with ID: 104
+Number of daughters: 11
+
+Track ID:  322
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  323
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  324
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  325
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  326
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  327
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  328
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  329
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  330
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  331
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  332
+Mother:    mu-  with ID: 321
+Number of daughters: 0
+
+Track ID:  333
+Mother:    pi-  with ID: 104
+Number of daughters: 0
+
+Track ID:  334
+Mother:    pi-  with ID: 102
+Number of daughters: 0
+
+Track ID:  335
+Mother:    K+  with ID: 99
+Number of daughters: 0
+
+Track ID:  336
+Mother:    pi+  with ID: 96
+Number of daughters: 0
+
+Track ID:  337
+Mother:    pi-  with ID: 95
+Number of daughters: 0
+
+Track ID:  338
+Mother:    pi-  with ID: 95
+Number of daughters: 0
+
+Track ID:  339
+Mother:    proton  with ID: 90
+Number of daughters: 0
+
+Track ID:  340
+Mother:    pi+  with ID: 86
+Number of daughters: 0
+
+Track ID:  341
+Mother:    pi+  with ID: 86
+Number of daughters: 0
+
+Track ID:  342
+Mother:    pi-  with ID: 82
+Number of daughters: 0
+
+Track ID:  343
+Mother:    pi-  with ID: 75
+Number of daughters: 0
+
+Track ID:  344
+Mother:    pi-  with ID: 75
+Number of daughters: 0
+
+Track ID:  345
+Mother:    pi+  with ID: 74
+Number of daughters: 0
+
+Track ID:  346
+Mother:    proton  with ID: 69
+Number of daughters: 0
+
+Track ID:  347
+Mother:    proton  with ID: 69
+Number of daughters: 0
+
+Track ID:  348
+Mother:    pi-  with ID: 66
+Number of daughters: 0
+
+Track ID:  349
+Mother:    pi+  with ID: 64
+Number of daughters: 1
+
+Track ID:  350
+Mother:    e-  with ID: 349
+Number of daughters: 0
+
+Track ID:  351
+Mother:    pi+  with ID: 64
+Number of daughters: 1
+
+Track ID:  352
+Mother:    e-  with ID: 351
+Number of daughters: 0
+
+Track ID:  353
+Mother:    Sigma-  with ID: 61
+Number of daughters: 0
+
+Track ID:  354
+Mother:    pi+  with ID: 57
+Number of daughters: 0
+
+Track ID:  355
+Mother:    pi+  with ID: 57
+Number of daughters: 0
+
+Track ID:  356
+Mother:    pi-  with ID: 56
+Number of daughters: 0
+
+Track ID:  357
+Mother:    pi+  with ID: 50
+Number of daughters: 0
+
+Track ID:  358
+Mother:    pi+  with ID: 50
+Number of daughters: 0
+
+Track ID:  359
+Mother:    pi+  with ID: 48
+Number of daughters: 0
+
+Track ID:  360
+Mother:    pi-  with ID: 39
+Number of daughters: 0
+
+Track ID:  361
+Mother:    K-  with ID: 35
+Number of daughters: 0
+
+Track ID:  362
+Mother:    pi-  with ID: 34
+Number of daughters: 0
+
+Track ID:  363
+Mother:    pi-  with ID: 26
+Number of daughters: 0
+
+Track ID:  364
+Mother:    pi-  with ID: 24
+Number of daughters: 0
+
+Track ID:  365
+Mother:    pi+  with ID: 23
+Number of daughters: 0
+
+Track ID:  366
+Mother:    pi-  with ID: 21
+Number of daughters: 0
+
+Track ID:  367
+Mother:    pi-  with ID: 17
+Number of daughters: 0
+
+Track ID:  368
+Mother:    pi-  with ID: 17
+Number of daughters: 0
+
+Track ID:  369
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  370
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  371
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  372
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  373
+Mother:    pi+  with ID: 16
+Number of daughters: 2
+
+Track ID:  374
+Mother:    proton  with ID: 373
+Number of daughters: 0
+
+Track ID:  375
+Mother:    proton  with ID: 373
+Number of daughters: 0
+
+Track ID:  376
+Mother:    pi+  with ID: 16
+Number of daughters: 5
+
+Track ID:  377
+Mother:    proton  with ID: 376
+Number of daughters: 0
+
+Track ID:  378
+Mother:    proton  with ID: 376
+Number of daughters: 0
+
+Track ID:  379
+Mother:    proton  with ID: 376
+Number of daughters: 0
+
+Track ID:  380
+Mother:    proton  with ID: 376
+Number of daughters: 0
+
+Track ID:  381
+Mother:    proton  with ID: 376
+Number of daughters: 0
+
+Track ID:  382
+Mother:    pi+  with ID: 16
+Number of daughters: 7
+
+Track ID:  383
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  384
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  385
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  386
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  387
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  388
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  389
+Mother:    proton  with ID: 382
+Number of daughters: 0
+
+Track ID:  390
+Mother:    pi+  with ID: 16
+Number of daughters: 6
+
+Track ID:  391
+Mother:    proton  with ID: 390
+Number of daughters: 0
+
+Track ID:  392
+Mother:    proton  with ID: 390
+Number of daughters: 0
+
+Track ID:  393
+Mother:    proton  with ID: 390
+Number of daughters: 0
+
+Track ID:  394
+Mother:    proton  with ID: 390
+Number of daughters: 0
+
+Track ID:  395
+Mother:    proton  with ID: 390
+Number of daughters: 0
+
+Track ID:  396
+Mother:    proton  with ID: 390
+Number of daughters: 0
+
+Track ID:  397
+Mother:    pi+  with ID: 16
+Number of daughters: 3
+
+Track ID:  398
+Mother:    proton  with ID: 397
+Number of daughters: 0
+
+Track ID:  399
+Mother:    proton  with ID: 397
+Number of daughters: 0
+
+Track ID:  400
+Mother:    proton  with ID: 397
+Number of daughters: 0
+
+Track ID:  401
+Mother:    pi+  with ID: 16
+Number of daughters: 4
+
+Track ID:  402
+Mother:    proton  with ID: 401
+Number of daughters: 0
+
+Track ID:  403
+Mother:    proton  with ID: 401
+Number of daughters: 0
+
+Track ID:  404
+Mother:    proton  with ID: 401
+Number of daughters: 0
+
+Track ID:  405
+Mother:    proton  with ID: 401
+Number of daughters: 0
+
+Track ID:  406
+Mother:    pi+  with ID: 16
+Number of daughters: 3
+
+Track ID:  407
+Mother:    proton  with ID: 406
+Number of daughters: 0
+
+Track ID:  408
+Mother:    proton  with ID: 406
+Number of daughters: 0
+
+Track ID:  409
+Mother:    proton  with ID: 406
+Number of daughters: 0
+
+Track ID:  410
+Mother:    pi+  with ID: 16
+Number of daughters: 2
+
+Track ID:  411
+Mother:    pi-  with ID: 410
+Number of daughters: 0
+
+Track ID:  412
+Mother:    pi-  with ID: 410
+Number of daughters: 0
+
+Track ID:  413
+Mother:    pi+  with ID: 16
+Number of daughters: 1
+
+Track ID:  414
+Mother:    pi+  with ID: 413
+Number of daughters: 0
+
+Track ID:  415
+Mother:    pi+  with ID: 16
+Number of daughters: 2
+
+Track ID:  416
+Mother:    pi+  with ID: 16
+Number of daughters: 7
+
+Track ID:  417
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  418
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  419
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  420
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  421
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  422
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  423
+Mother:    pi+  with ID: 416
+Number of daughters: 0
+
+Track ID:  424
+Mother:    pi0  with ID: 415
+Number of daughters: 0
+
+Track ID:  425
+Mother:    pi0  with ID: 415
+Number of daughters: 0
+
+Track ID:  426
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  427
+Mother:    pi+  with ID: 16
+Number of daughters: 9
+
+Track ID:  428
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  429
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  430
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  431
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  432
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  433
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  434
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  435
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  436
+Mother:    proton  with ID: 427
+Number of daughters: 0
+
+Track ID:  437
+Mother:    pi+  with ID: 16
+Number of daughters: 2
+
+Track ID:  438
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  439
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  440
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  441
+Mother:    pi+  with ID: 14
+Number of daughters: 0
+
+Track ID:  442
+Mother:    pi0  with ID: 437
+Number of daughters: 0
+
+Track ID:  443
+Mother:    pi0  with ID: 437
+Number of daughters: 0
+
+Track ID:  444
+Mother:    antiproton  with ID: 13
+Number of daughters: 0
+
+Track ID:  445
+Mother:    pi-  with ID: 11
+Number of daughters: 0
+
+Track ID:  446
+Mother:    pi+  with ID: 9
+Number of daughters: 0
+
+Track ID:  447
+Mother:    pi-  with ID: 8
+Number of daughters: 0
+
+Track ID:  448
+Mother:    pi+  with ID: 7
+Number of daughters: 0
+
+Track ID:  449
+Mother:    pi-  with ID: 4
+Number of daughters: 0
+
+Track ID:  450
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  451
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  452
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  453
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  454
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  455
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  456
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  457
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  458
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  459
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  460
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  461
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  462
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  463
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  464
+Mother:    pi+  with ID: 16
+Number of daughters: 0
+
+Track ID:  465
+Mother:    Sigma-  with ID: 61
+Number of daughters: 0
+
+Track ID:  466
+Mother:    e+  with ID: 0
+Number of daughters: 0
+
+  trackID: 252  chamberNb: 0  energy deposit (keV): 3.022  position (cm): (-1.423, 1.406, 9.094)
