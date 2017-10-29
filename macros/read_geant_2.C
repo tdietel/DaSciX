@@ -5,14 +5,14 @@
 void read_geant_2(TString filename="Example02.root")
 {
 
-  std::ofstream out("out.txt");
+  std::fstream out("out.txt",fstream::app);
   std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
 
   TFile* infile=new TFile(filename.Data());
 
   TTree* tr = (TTree*)infile->Get("Example02");
 
-  tr->Print();
+  //tr->Print();
 
   //std::cout << tr->GetEntries() << endl;
 
@@ -29,6 +29,7 @@ void read_geant_2(TString filename="Example02.root")
   for (int ev=0; ev<tr->GetEntries(); ev++) {
 
     std::cout << "event " << ev << endl;
+    
     tr->GetEvent(ev);  // read event from TTree
 
 
@@ -46,6 +47,7 @@ void read_geant_2(TString filename="Example02.root")
       Ex02TrackerHit* hit =  (Ex02TrackerHit*)(*fTrackerCollection)[h];
 
       hit->Print();
+      out.close();
     }
 
   }

@@ -46,6 +46,12 @@ void GeneratePrimariesPythia8()
       return;
    }
 
+
+
+
+
+//for (Int_t loopvar = 0; loopvar < 10000; loopvar++) {
+
 // Load libraries
    if (gSystem->Getenv("PYTHIA8")) {
       gSystem->Load("$PYTHIA8/lib/libpythia8");
@@ -67,6 +73,9 @@ void GeneratePrimariesPythia8()
    pythia8->ReadString("WeakSingleBoson:all = on");
    pythia8->ReadString("WeakDoubleBoson:all = on");
    pythia8->ReadString("PhaseSpace:pTHatMin = 50");
+   pythia8->ReadString("Random:setSeed = on");
+   pythia8->ReadString("Random:seed = 0");
+
    //pythia8->ReadString("Event:list(showScaleAndVertex) = true");
 
 // Initialize
@@ -79,7 +88,11 @@ void GeneratePrimariesPythia8()
 
   // Create txt file to write to
   ofstream myfile;
-  myfile.open ("InitialParticles.txt");
+  //ofstream two;
+  myfile.open ("InitialParticles.txt");//,fstream::app);
+  //two.open("Phi.csv");
+
+//myfile << "event: " << loopvar << endl;
 
 // Particle loop
 	Int_t j = 0;
@@ -109,6 +122,14 @@ void GeneratePrimariesPythia8()
       Double_t poly = pol.Y();
       Double_t polz = pol.Z();
 
+      //Phi_angle
+
+      Double_t phiZ = part->Phi();
+
+     //Mass
+
+      Double_t mass = part->GetMass();
+
       j++;
 
       if (R<2)
@@ -126,6 +147,8 @@ void GeneratePrimariesPythia8()
                      << "\t" << E << "\t" << Vx << "\t" << Vy << "\t"
                      << Vz << "\t" << T << "\t" << polx << "\t" << poly
                      << "\t" << polz << "\n";
+
+		  //two << phiZ << "\t" << mass << "\n";
               }
 
           }
@@ -135,6 +158,8 @@ void GeneratePrimariesPythia8()
                  << "\t" << E << "\t" << Vx << "\t" << Vy << "\t"
                  << Vz << "\t" << T << "\t" << polx << "\t" << poly
                  << "\t" << polz << "\n";
+
+              //two << phiZ << "\t" << mass <<"\n";
           }
 
       }
@@ -142,5 +167,6 @@ void GeneratePrimariesPythia8()
    }
 
    myfile.close();
-   pythia8->PrintStatistics();
+   //pythia8->PrintStatistics();
  }
+//}
