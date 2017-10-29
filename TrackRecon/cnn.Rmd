@@ -1,0 +1,473 @@
+---
+title: "Untitled"
+author: "Gerhard Viljoen"
+date: "25 October 2017"
+output: html_document
+---
+
+```{r}
+require(tidyverse)
+require(keras)
+require(stringr)
+
+all <- read.csv("AllInfo.csv")
+
+hits <- read.csv("hits.csv")
+
+#phi <- read.csv("Phi.csv", sep="\t",header=F)
+
+#phi <- select(phi,c(1))
+
+#for each track, we want to predict the kind of particle it is and the track it followed
+
+particles <- all %>%
+  filter(grepl("Track:",TRACKNUMBER))
+
+has.hits <- as.vector(unique(hits$trackID))
+
+particles$TRACKNUMBER <- as.numeric(gsub("Track: ", "", particles$TRACKNUMBER))
+
+particles <- particles %>%
+  filter(TRACKNUMBER %in% has.hits) %>% select(c(1,2))
+
+#phi <- phi %>%
+  mutate(trackID=rownames(phi)) %>%
+  filter(trackID %in% has.hits)
+
+#names(phi) <- c("phi","trackID")
+
+#we do this using a neural network, with inputs: x0-9, y0-9, z0-9, px, py, pz, e0-9, phi
+
+momenta <- which(grepl("Track",all$TRACKNUMBER))
+
+momenta <- all[momenta,c(1,3,4,5,6,7,8)]
+
+momenta$TRACKNUMBER <- as.numeric(gsub("Track: ", "", momenta$TRACKNUMBER))
+
+momenta <- filter(momenta,TRACKNUMBER %in% has.hits)
+
+particles <- cbind(particles,momenta[,c(5,6,7)])
+
+momenta <- select(momenta,c(1,2,3,4))
+
+names(momenta)[1] <- "t"
+#names(phi)[2] <- "t"
+
+#phi$t <- as.numeric(phi$t)
+momenta$t <- as.numeric(momenta$t)
+hits$trackID <- as.numeric(hits$trackID)
+
+predictors <- momenta
+
+tableu <- data.frame(c(track=NA,i=NA,x=NA,y=NA,z=NA,e=NA))
+
+tableu <- as.data.frame(t(tableu))
+
+rownames(tableu) <- 1
+
+for(track in predictors$t){
+  dat <- hits[hits$trackID==track,]
+  chambers <- as.vector(dat$chamberNb)
+  for(i in c(0,1,2,3,4,5,6,7,8,9)){
+    if(i %in% chambers){
+    x <- dat$Xpos[which(dat$chamberNb==i)][1]
+    y <- dat$Ypos[which(dat$chamberNb==i)][1]
+    z <- dat$Zpos[which(dat$chamberNb==i)][1]
+    e <- dat$energyDeposit.keV.[which(dat$chamberNb==i)][1]
+  }
+  else{
+    x <- NA
+    y <- NA
+    z <- NA
+    e <- NA
+  }
+    output <- c(track,i,x,y,z,e)
+    tableu <- rbind(tableu,output)
+  }
+}
+
+tableu <- tableu %>%
+  filter(track %in% has.hits)
+
+names(tableu)[1] <- "t"
+tableu$t <- as.integer(tableu$t)
+
+predictors <- predictors %>%
+  mutate(x0=tableu$x[tableu$i==0],x1=tableu$x[tableu$i==1],x2=tableu$x[tableu$i==2],x3=tableu$x[tableu$i==3],x4=tableu$x[tableu$i==4],x5=tableu$x[tableu$i==5],x6=tableu$x[tableu$i==6],x7=tableu$x[tableu$i==7],x8=tableu$x[tableu$i==8],x9=tableu$x[tableu$i==9],y0=tableu$y[tableu$i==0],y1=tableu$y[tableu$i==1],y2=tableu$y[tableu$i==2],y3=tableu$y[tableu$i==3],y4=tableu$y[tableu$i==4],y5=tableu$y[tableu$i==5],y6=tableu$y[tableu$i==6],y7=tableu$y[tableu$i==7],y8=tableu$y[tableu$i==8],y9=tableu$y[tableu$i==9],z0=tableu$z[tableu$i==0],z1=tableu$z[tableu$i==1],z2=tableu$z[tableu$i==2],z3=tableu$z[tableu$i==3],z4=tableu$z[tableu$i==4],z5=tableu$z[tableu$i==5],z6=tableu$z[tableu$i==6],z7=tableu$z[tableu$i==7],z8=tableu$z[tableu$i==8],z9=tableu$z[tableu$i==9],e0=tableu$e[tableu$i==0],e1=tableu$e[tableu$i==1],e2=tableu$e[tableu$i==2],e3=tableu$e[tableu$i==3],e4=tableu$e[tableu$i==4],e5=tableu$e[tableu$i==5],e6=tableu$e[tableu$i==6],e7=tableu$e[tableu$i==7],e8=tableu$e[tableu$i==8],e9=tableu$e[tableu$i==9])
+
+predictors <- cbind(predictors,particles$PARTICLE_ID)
+names(predictors)[46] <- "pid"
+
+predictors <- predictors %>%
+  mutate(charge=ifelse(grepl("antiproton",pid),"-",ifelse(grepl("\\+$",pid),"+",ifelse(grepl("\\-$",pid),"-","+"))))
+
+predictors <- predictors %>%
+  select(t,pid,everything())
+
+for(i in seq(1:length(predictors$t))){
+  
+  max.x <- ifelse(!is.na(predictors$x9[i]),predictors$x9[i],ifelse(!is.na(predictors$x8[i]),predictors$x8[i],ifelse(!is.na(predictors$x7[i]),predictors$x7[i], ifelse(!is.na(predictors$x6[i]),predictors$x6[i],ifelse(!is.na(predictors$x5[i]),predictors$x5[i],ifelse(!is.na(predictors$x4[i]),predictors$x4[i],ifelse(!is.na(predictors$x3[i]),predictors$x3[i],ifelse(!is.na(predictors$x2[i]),predictors$x2[i],ifelse(!is.na(predictors$x1[i]),predictors$x1[i],predictors$x0[i])))))))))
+  
+  max.y <- ifelse(!is.na(predictors$y9[i]),predictors$y9[i],ifelse(!is.na(predictors$y8[i]),predictors$y8[i],ifelse(!is.na(predictors$y7[i]),predictors$y7[i], ifelse(!is.na(predictors$y6[i]),predictors$y6[i],ifelse(!is.na(predictors$y5[i]),predictors$y5[i],ifelse(!is.na(predictors$y4[i]),predictors$y4[i],ifelse(!is.na(predictors$y3[i]),predictors$y3[i],ifelse(!is.na(predictors$y2[i]),predictors$y2[i],ifelse(!is.na(predictors$y1[i]),predictors$y1,predictors$y0[i])))))))))
+  
+  max.z <- ifelse(!is.na(predictors$z9[i]),predictors$z9[i],ifelse(!is.na(predictors$z8[i]),predictors$z8[i],ifelse(!is.na(predictors$z7[i]),predictors$z7[i], ifelse(!is.na(predictors$z6[i]),predictors$z6[i],ifelse(!is.na(predictors$z5[i]),predictors$z5[i],ifelse(!is.na(predictors$z4[i]),predictors$z4[i],ifelse(!is.na(predictors$z3[i]),predictors$z3[i],ifelse(!is.na(predictors$z2[i]),predictors$z2[i],ifelse(!is.na(predictors$z1[i]),predictors$z1[i],predictors$z0[i])))))))))
+  
+  min.x <- ifelse(!is.na(predictors$x0[i]),predictors$x0[i],ifelse(!is.na(predictors$x1[i]),predictors$x1[i],ifelse(!is.na(predictors$x2[i]),predictors$x2[i], ifelse(!is.na(predictors$x3[i]),predictors$x3[i],ifelse(!is.na(predictors$x4[i]),predictors$x4[i],ifelse(!is.na(predictors$x5[i]),predictors$x5[i],ifelse(!is.na(predictors$x6[i]),predictors$x6[i],ifelse(!is.na(predictors$x7[i]),predictors$x7[i],ifelse(!is.na(predictors$x8[i]),predictors$x8[i],predictors$x9[i])))))))))
+  
+  min.y <- ifelse(!is.na(predictors$y0[i]),predictors$y0[i],ifelse(!is.na(predictors$y1[i]),predictors$y1[i],ifelse(!is.na(predictors$y2[i]),predictors$y2[i], ifelse(!is.na(predictors$y3[i]),predictors$y3[i],ifelse(!is.na(predictors$y4[i]),predictors$y4[i],ifelse(!is.na(predictors$y5[i]),predictors$y5[i],ifelse(!is.na(predictors$y6[i]),predictors$y6[i],ifelse(!is.na(predictors$y7[i]),predictors$y7[i],ifelse(!is.na(predictors$y8[i]),predictors$y8[i],predictors$y9[i])))))))))
+  
+  min.z <- ifelse(!is.na(predictors$z0[i]),predictors$z0[i],ifelse(!is.na(predictors$z1[i]),predictors$z1[i],ifelse(!is.na(predictors$z2[i]),predictors$z2[i], ifelse(!is.na(predictors$z3[i]),predictors$z3[i],ifelse(!is.na(predictors$z4[i]),predictors$z4[i],ifelse(!is.na(predictors$z5[i]),predictors$z5[i],ifelse(!is.na(predictors$z6[i]),predictors$z6[i],ifelse(!is.na(predictors$z7[i]),predictors$z7[i],ifelse(!is.na(predictors$z8[i]),predictors$z8[i],predictors$z9[i])))))))))
+  
+  predictors$min.x[i] <- min.x
+  predictors$max.x[i] <- max.x
+
+  predictors$min.y[i] <- min.y
+  predictors$max.y[i] <- max.y
+
+  predictors$min.z[i] <- min.z
+  predictors$max.z[i] <- max.z
+  
+  #a <- c(min.x,min.y,min.z)
+  a <- c(0,0,1) #origin of coordinate system
+  b <- c(max.x,max.y,max.z)
+  
+  predictors$theta[i] <- acos( sum(a*b) / ( sqrt(sum(a * a)) * sqrt(sum(b * b)) ) )
+  
+}
+
+# predictors <- predictors %>%
+#   filter(!is.nan(theta)) %>%
+#   filter(theta!=0)
+
+for(i in seq(1:length(predictors$t))){
+
+predictors$distance[i] <- dist(rbind(c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i])))
+}
+
+predictors <- predictors %>%
+  filter(distance!=0) %>%
+  filter(min.x!=max.x)
+save.image()
+```
+
+```{r}
+load(".Rdata")
+#require(rgl)
+
+# 
+# get_colors <- function(groups, group.col = palette()){
+#   groups <- as.factor(groups)
+#   ngrps <- length(levels(groups))
+#   if(ngrps > length(group.col))
+#     group.col <- rep(group.col, ngrps)
+#   color <- group.col[as.numeric(groups)]
+#   names(color) <- as.vector(groups)
+#   return(color)
+# }
+
+
+# rgl.bg(color = "white")
+# 
+# for(i in predictors$t){
+#   
+# rgl.points(predictors$x0[i],predictors$y0[i],predictors$z0[i],col="red",size=3)
+# rgl.points(predictors$x1[i],predictors$y1[i],predictors$z1[i],col="red",size=3)
+# rgl.points(predictors$x2[i],predictors$y2[i],predictors$z2[i],col="red",size=3)
+# rgl.points(predictors$x3[i],predictors$y3[i],predictors$z3[i],col="red",size=3)
+# rgl.points(predictors$x4[i],predictors$y4[i],predictors$z4[i],col="red",size=3)
+# rgl.points(predictors$x5[i],predictors$y5[i],predictors$z5[i],col="red",size=3)
+# rgl.points(predictors$x6[i],predictors$y6[i],predictors$z6[i],col="red",size=3)
+# rgl.points(predictors$x7[i],predictors$y7[i],predictors$z7[i],col="red",size=3)
+# rgl.points(predictors$x8[i],predictors$y8[i],predictors$z8[i],col="red",size=3)
+# rgl.points(predictors$x9[i],predictors$y9[i],predictors$z9[i],col="red",size=3)
+# 
+# rgl.lines(c(predictors$min.x[i],predictors$max.x[i]),c(predictors$min.y[i],predictors$max.y[i]),c(predictors$min.z[i],predictors$max.z[i]),col="blue",lwd=3)
+# 
+# rgl.texts(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i],predictors$t[i],col="red")
+# rgl.texts(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i],predictors$t[i],col="green")
+#   
+# }
+
+
+cross3d_prod <- function(v1,v2){
+  v3 <- vector()
+  v3[1] <- v1[2]*v2[3]-v1[3]*v2[2]
+  v3[2] <- v1[3]*v2[1]-v1[1]*v2[3]
+  v3[3] <- v1[1]*v2[2]-v1[2]*v2[1]
+  return(v3)
+}
+
+
+dist3d <- function(point.xyz,min.xyz,max.xyz) {
+  v1 <- min.xyz - max.xyz
+  v2 <- point.xyz - min.xyz      
+  v3 <- cross3d_prod(v1,v2)
+  area <- sqrt(sum(v3*v3))/2
+  d <- 2*area/sqrt(sum(v1*v1))
+}
+error <- as.data.frame(predictors$t)
+for(i in seq(1,length(rownames(predictors)))){
+  
+  error$error0[i] <- dist3d(c(predictors$x0[i],predictors$y0[i],predictors$z0[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error1[i] <- dist3d(c(predictors$x1[i],predictors$y1[i],predictors$z1[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error2[i] <- dist3d(c(predictors$x2[i],predictors$y2[i],predictors$z2[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error3[i] <- dist3d(c(predictors$x3[i],predictors$y3[i],predictors$z3[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error4[i] <- dist3d(c(predictors$x4[i],predictors$y4[i],predictors$z4[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error5[i] <- dist3d(c(predictors$x5[i],predictors$y5[i],predictors$z5[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error6[i] <- dist3d(c(predictors$x6[i],predictors$y6[i],predictors$z6[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error7[i] <- dist3d(c(predictors$x7[i],predictors$y7[i],predictors$z7[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error8[i] <- dist3d(c(predictors$x8[i],predictors$y8[i],predictors$z8[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  error$error9[i] <- dist3d(c(predictors$x9[i],predictors$y9[i],predictors$z9[i]),c(predictors$min.x[i],predictors$min.y[i],predictors$min.z[i]),c(predictors$max.x[i],predictors$max.y[i],predictors$max.z[i]))
+  
+}
+
+# for(i in seq(1,length(rownames(predictors)))){
+# rgl.spheres(predictors$x0[i],predictors$y0[i],predictors$z0[i],radius=(predictors$e0[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x0[i],predictors$y0[i],predictors$z0[i], size =  (error$error0[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x1[i],predictors$y1[i],predictors$z1[i],radius=(predictors$e1[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x1[i],predictors$y1[i],predictors$z1[i], size =  (error$error1[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x2[i],predictors$y2[i],predictors$z2[i],radius=(predictors$e2[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x2[i],predictors$y2[i],predictors$z2[i], size =  (error$error2[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x3[i],predictors$y3[i],predictors$z3[i],radius=(predictors$e3[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x3[i],predictors$y3[i],predictors$z3[i], size =  (error$error3[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x4[i],predictors$y4[i],predictors$z4[i],radius=(predictors$e4[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x4[i],predictors$y4[i],predictors$z4[i], size =  (error$error4[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x5[i],predictors$y5[i],predictors$z5[i],radius=(predictors$e5[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x5[i],predictors$y5[i],predictors$z5[i], size =  (error$error5[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x6[i],predictors$y6[i],predictors$z6[i],radius=(predictors$e6[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x6[i],predictors$y6[i],predictors$z6[i], size =  (error$error6[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x7[i],predictors$y7[i],predictors$z7[i],radius=(predictors$e7[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x7[i],predictors$y7[i],predictors$z7[i], size =  (error$error7[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x8[i],predictors$y8[i],predictors$z8[i],radius=(predictors$e8[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x8[i],predictors$y8[i],predictors$z8[i], size =  (error$error8[i]/46)*20,color="purple",alpha=0.8)
+# 
+# rgl.spheres(predictors$x9[i],predictors$y9[i],predictors$z9[i],radius=(predictors$e9[i]/3891)*5,col="orange",alpha=0.5)
+# shapelist3d(tetrahedron3d(), predictors$x9[i],predictors$y9[i],predictors$z9[i], size =  (error$error9[i]/46)*20,color="purple",alpha=0.8)
+# }
+
+error <- cbind(predictors$t,predictors$e0,error$error0,predictors$e1,error$error1,predictors$e2,error$error2,predictors$e3,error$error3,predictors$e4,error$error4,predictors$e5,error$error5,predictors$e6,error$error6,predictors$e7,error$error7,predictors$e8,error$error8,predictors$e9,error$error9)
+
+error[,-c(1)] <- normalize(as.matrix(error[,-c(1)]))
+
+error <- as.data.frame(error)
+
+names(error) <- c("t","E0","er0","E1","er1","E2","er2","E3","er3","E4","er4","E5","er5","E6","er6","E7","er7",'E8',"er8","E9","er9")
+
+error <- error %>% filter(!is.na(er0))
+
+names(particles)[1] <- c("t")
+
+error <- left_join(error,particles,by=c("t"))
+
+add <- predictors %>%
+  select(c(t,charge))
+
+error <- left_join(error,add,by=c("t"))
+```
+
+```{r}
+#run the h2o_install.R file to set up h2o
+require(h2o)
+h2o.init(nthreads = -1,max_mem_size = "2G")
+
+h2o.removeAll()
+
+error.h2o <- as.h2o(error)
+
+splits <- h2o.splitFrame(
+
+  error.h2o,           ##  splitting the H2O frame we read above
+
+  c(0.6,0.2),   ##  create splits of 60% and 20%; 
+
+                ##  H2O will create one more split of 1-(sum of these parameters)
+
+                ##  so we will get 0.6 / 0.2 / 1 - (0.6+0.2) = 0.6/0.2/0.2
+
+  seed=1234)
+
+train <- h2o.assign(splits[[1]], "train.hex")   
+
+                ## assign the first result the R variable train
+
+                ## and the H2O name train.hex
+
+valid <- h2o.assign(splits[[2]], "valid.hex")   ## R valid, H2O valid.hex
+
+test <- h2o.assign(splits[[3]], "test.hex")     ## R test, H2O test.hex
+
+rf1 <- h2o.randomForest(         ## h2o.randomForest function
+
+  training_frame = train,        ## the H2O frame for training
+
+  validation_frame = valid,      ## the H2O frame for validation (not required)
+
+  x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),                       ## the predictor columns, by column index
+
+  y=22,                          ## the target index (what we are predicting)
+
+  model_id = "rf_covType_v1",    ## name the model in H2O
+
+                                 ##   not required, but helps use Flow
+
+  ntrees = 2000,                  ## use a maximum of 200 trees to create the
+
+                                 ##  random forest model. The default is 50.
+
+                                 ##  I have increased it because I will let 
+
+                                 ##  the early stopping criteria decide when
+
+                                 ##  the random forest is sufficiently accurate
+
+  stopping_rounds = 2,           ## Stop fitting new trees when the 2-tree
+
+                                 ##  average is within 0.001 (default) of 
+
+                                 ##  the prior two 2-tree averages.
+
+                                 ##  Can be thought of as a convergence setting
+
+  score_each_iteration = T,      ## Predict against training and validation for
+
+                                 ##  each tree. Default will skip several.
+
+  seed = 1000000)                ## Set the random seed so that this can be
+
+                                 ##  reproduced.
+
+#summary(rf1)                     ## View information about the model.
+
+                                 ## Keys to look for are validation performance
+
+                                 ##  and variable importance
+
+
+
+#rf1@model$validation_metrics     ## A more direct way to access the validation 
+
+                                 ##  metrics. Performance metrics depend on 
+
+                                 ##  the type of model being built. With a
+
+                                 ##  multinomial classification, we will primarily
+
+                                 ##  look at the confusion matrix, and overall
+
+                                 ##  accuracy via hit_ratio @ k=1.
+
+h2o.hit_ratio_table(rf1,valid = T)[1,2]
+
+                                 ## Even more directly, the hit_ratio @ k=1
+```
+
+```{r}
+gbm1 <- h2o.gbm(
+
+  training_frame = train,        ## the H2O frame for training
+
+  validation_frame = valid,      ## the H2O frame for validation (not required)
+
+  x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),                        ## the predictor columns, by column index
+
+  y=22,                          ## the target index (what we are predicting)
+  
+  ntrees = 2000,
+
+  model_id = "gbm_covType1",     ## name the model in H2O
+
+  seed = 2000000)                ## Set the random seed for reproducability
+
+
+
+###############################################################################
+
+#summary(gbm1)                   ## View information about the model.
+
+
+
+h2o.confusionMatrix(gbm1)
+h2o.confusionMatrix(rf1)
+
+h2o.confusionMatrix(gbm1,test)
+h2o.confusionMatrix(rf1,test)
+```
+```{r}
+dl1 <- h2o.deeplearning(  model_id="dl_model_first",   training_frame=train,   validation_frame=valid,   ## validation dataset: used for scoring and early stopping 
+                           x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),                        ## the predictor columns, by column index
+
+  y=22,        
+  activation="Rectifier",  ## default  
+  hidden=c(200,200,200,200,200),       ## default: 2 hidden layers with 200 neurons each
+  epochs=1000,  variable_importances=T)    ## not enabled by default )
+  
+  h2o.confusionMatrix(dl1)
+  h2o.confusionMatrix(dl1,test) 
+  
+  dl2 <- h2o.deeplearning(  model_id="dl_model_faster",   training_frame=train,   validation_frame=valid,  x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),  y=22,  hidden=c(32,32,32),                  ## small network, runs faster
+                             epochs=1000000,                      ## hopefully converges earlier... 
+                             score_validation_samples=10000,      ## sample the validation dataset (faster) 
+                             stopping_rounds=2,  stopping_metric="misclassification") ## could be "MSE","logloss","r2"  stopping_tolerance=0.01 ) 
+  
+  h2o.confusionMatrix(dl2)
+  h2o.confusionMatrix(dl2,test)
+  
+  dl3 <- h2o.deeplearning(  model_id="dl_model_tuned",   training_frame=train,   validation_frame=valid,   x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),   y=22,   #overwrite_with_best_model=F,    ## Return the final model after 10 epochs, even if not the best  
+                           hidden=c(256,256,256),          ## more hidden layers -> more complex interactions 
+                           epochs=1000,                      ## to keep it short enough  s
+                           score_validation_samples=10000, ## downsample validation set for faster scoring
+                           score_duty_cycle=0.025,         ## don't score more than 2.5% of the wall time  adaptive_rate=F,                ## manually tuned learning rate  
+                           #rate=0.01,   rate_annealing=2e-6,              
+                          # momentum_start=0.2,             ## manually tuned momentum
+                           #momentum_stable=0.4,   momentum_ramp=1e7,  
+                           l1=1e-5,                        ## add some L1/L2 regularization 
+                           l2=1e-5,  max_w2=10)                       ## helps stability for Rectifier ) 
+  
+  h2o.confusionMatrix(dl3)
+  h2o.confusionMatrix(dl3,test) 
+```
+
+```{r}
+#hyperparameter search
+
+hyper_params <- list(  hidden=list(c(32,32,32),c(64,64),c(256,256,256,256),c(2000,2000,2000,2000)),  
+                       input_dropout_ratio=c(0,0.05,0.01,0.05,0.001,0.005),  
+                       rate=c(0.01,0.02,0.001,0.3),  
+                       rate_annealing=c(1e-8,1e-7,1e-6) ) 
+
+hyper_params 
+grid <- h2o.grid(  algorithm="deeplearning",  grid_id="dl_grid",   training_frame=train,  validation_frame=valid,   x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),   y=22,  epochs=10000,  stopping_metric="misclassification",  stopping_tolerance=1e-2,        ## stop when misclassification does not improve by >=1% for 2 scoring events  
+                                stopping_rounds=5,  score_validation_samples=10000, ## downsample validation set for faster scoring  
+                                #score_duty_cycle=0.025,         ## don't score more than 2.5% of the wall time  
+                                adaptive_rate=F,                ## manually tuned learning rate  momentum_start=0.5,             ## manually tuned momentum  
+                                momentum_stable=0.9,   momentum_ramp=1e7,   l1=1e-5,  l2=1e-5,  activation=c("Rectifier"),  max_w2=10)                      ## can help improve stability for Rectifier  hyper_params=hyper_params ) 
+
+grid <- h2o.getGrid("dl_grid",sort_by="err",decreasing=FALSE)
+
+## To see what other "sort_by" criteria are allowed #grid <- h2o.getGrid("dl_grid",sort_by="wrong_thing",decreasing=FALSE)
+## Sort by logloss 
+h2o.getGrid("dl_grid",sort_by="logloss",decreasing=FALSE)
+## Find the best model and its full set of parameters 
+
+best_model <- h2o.getModel(grid@model_ids[[1]]) 
+
+print(best_model@allparameters) 
+print(h2o.performance(best_model, newdata=test)) 
+
+
+```
+
+```{r}
+deepdeep <- h2o.deeplearning(  model_id="dl_model_first",x=c(2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),   y=22,training_frame = train,validation_frame = valid,nfolds=3, balance_classes = F,standardize = F,activation="Rectifier",hidden=c(256,256,256,256,256,256,256,256),epochs=1000,adaptive_rate = T,input_dropout_ratio = 0.01,stopping_rounds = 5,fast_mode = F,shuffle_training_data = T)
+
+h2o.performance(deepdeep,newdata = test)
+```
+

@@ -1,0 +1,99 @@
+---
+title: "Untitled"
+author: "Gerhard Viljoen"
+date: "21 October 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, Read in Data}
+#Read in data and wrangle
+
+require(tidyverse)
+hits <- read.csv("hits.csv")
+phi <- read.csv("Phi.csv", header=F,sep="\t")
+all <- read.csv("AllInfo.csv")
+
+init <- all %>%
+  filter(is.na(chNo)) %>%
+  filter(Mother=="-1") %>%
+  select(c(seq(1:9)))
+
+init <- cbind(init,phi)
+
+names(init)[c(10,11)] <- c("Phi","Mass")
+
+init <- init %>%
+  mutate(q=ifelse(grepl("\\+",init$PARTICLE_ID),1,ifelse(grepl("\\-",init$PARTICLE_ID),-1,0)))
+
+init$TRACKNUMBER <- seq(1:length(init$TRACKNUMBER))
+```
+
+```{r, formulae}
+fx <- function(vx,vy,vz,px,py,pz,phi,q,m){
+  B <- 2 #kiloGauss
+  time <- seq(0,0.1,length.out = 1000000)
+  #m <- m*(1.783*10^-36) #Gev/c^2 to kilogram
+  #c <- 299792458 #m/s speed of light
+  
+  px <- px #MeV to GeV
+  py <- py
+  pz <- pz
+  
+  x <- c()
+  y <- c()
+  z <- c()
+  
+  p <- sqrt(px^2+py^2) #this should be transverse momentum in GeV
+  
+  r <- p/(q*B) #momentum is again converted to MeV for this calculation
+  
+  V.x <- px/m #momentum converted from GeV to eV, divided by mass in kg to get velocity
+  V.y <- py/m
+  V.z <- pz/m
+  
+  #w <- (2*pi*sqrt(V.x^2+V.y^2))/r
+  
+  w <- (2*pi*sqrt(V.x^2+V.y^2))/r
+  
+  for(t in time){
+  
+  x. <- vx + (r*((w*t)+phi))
+  y. <- vy + (r*((w*t)+phi))
+  z. <- vz + (V.z*t)
+  
+  # x. <- x./100 #because r was in meters, and our detector is on the scale of cm
+  # y. <- y./100
+  # z. <- z./100
+  
+  x <- c(x,x.)
+  y <- c(y,y.)
+  z <- c(z,z.)
+}
+  result <- cbind(x,y,z)
+  return(result)
+}
+
+test <- init[3,]
+
+a <- fx(0.3337,1.98200,-5.599000,test$Px,test$Py,test$Pz,test$Phi,test$q,test$Mass)
+
+#optim()
+
+```
+
+
+```{r}
+require(plot3D)
+test2 <- hits %>% 
+  filter(trackID==3) %>%
+  select(Xpos,Ypos,Zpos)
+test2 <- rbind(bbb,test2)
+par(mfrow=c(2,1))
+scatter3D(test$x, test$y, test$z,phi=0,col="red",ticktype="detailed")
+scatter3D(test2$Xpos,test2$Ypos,test2$Zpos,phi=0,col="black",ticktype="detailed")
+```
+

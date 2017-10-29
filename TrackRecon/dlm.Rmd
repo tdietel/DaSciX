@@ -1,0 +1,109 @@
+---
+title: "dlm"
+author: "Gerhard Viljoen"
+date: "22 October 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+require(tidyverse)
+require(psych)
+hits <- read.csv("Hits.csv")
+
+hits <- hits %>%
+  select(c(1,3,4,5,6))
+
+names(hits) <- c("id","e","x","y","z")
+
+#covariance matrices for elements of state vector: x,y,z, Energy deposit
+
+fx <- function(data,par){
+  
+ses <- 0
+  
+ids <- unique(data$id)
+
+for(id. in ids){
+  dat <- data %>%
+    filter(data$id==id.)
+  
+  x. <- dat$x
+  y. <- dat$y
+  z. <- dat$z
+  e. <- dat$e
+  
+  l <- dim(dat)[1]
+  
+  if(l<=2){break}
+  
+  i <- seq(1,l,2)
+  j <- seq(2,l,2)
+  
+  for(i. in i){
+    if(i.==l){
+      break
+    }
+    for(j. in j){
+      if(j.==l){
+        break
+      }
+      x <- dat$x[i.]
+      xa <- dat$x[j.]
+      y <- dat$y[i.]
+      ya <- dat$y[j.]
+      z <- dat$z[i.]
+      za <- dat$z[j.]
+      e <- dat$e[i.]
+      ea <- dat$e[j.]
+    }
+  }
+  
+  qx <- par[1]
+  qy <- par[2]
+  qz <- par[3]
+  qe <- par[4]
+  
+  a <- par[5:20]
+  dim(a) <- c(4,4)
+  
+  ex <- rnorm(16,0,qx)
+  ey <- rnorm(16,0,qy)
+  ez <- rnorm(16,0,qz)
+  ee <- rnorm(16,0,qe)
+  
+  dimension <- c(4,4)
+  
+  dim(ex) <- dimension
+  dim(ey) <- dimension
+  dim(ez) <- dimension
+  dim(ee) <- dimension
+  
+  x2 <- (a*x)+ex
+  y2 <- (a*y)+ey
+  z2 <- (a*z)+ez
+  e2 <- (a*e)+ee
+  
+  sq.error.x <- sum((x2-xa)^2) #xa is the measured value (scalar), and x2 is a matrix, resulting from multiplying a matrix with a scalar, so this is where the problem lies...
+  sq.error.y <- sum((y2-ya)^2)
+  sq.error.z <- sum((z2-za)^2)
+  sq.error.e <- sum((e2-ea)^2)
+  
+  add <- sq.error.x+sq.error.y+sq.error.z+sq.error.e
+  ses <- ses+add
+  }
+  
+  return(ses)
+  
+}
+
+iM <- diag(x=0.5,nrow=4,ncol=4)
+
+mod <- optim(par=c(1,1,1,1,iM),fx,data=hits, method="CG")# control = list(maxit=10000))
+
+
+```
+
