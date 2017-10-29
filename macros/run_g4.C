@@ -31,7 +31,7 @@ void run_g4(const TString& configMacro = "g4Config.C")
   //gMC->SetCollectTracks(kTRUE);
 
   // Setting Geant4 visualization
-  ((TGeant4*)gMC)->ProcessGeantMacro("g4vis.in");
+  //((TGeant4*)gMC)->ProcessGeantMacro("g4vis.in");
 
   // Enter in Geant4 interactive session
   //((TGeant4*)gMC)->StartGeantUI();

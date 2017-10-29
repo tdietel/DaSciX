@@ -1,13 +1,13 @@
-void read_geant(TString filename="Example02_1.root")
+void read_geant(TString filename="Example02.root")
 {
 
   TFile* infile=new TFile(filename.Data());
 
   TTree* tr = (TTree*)infile->Get("Example02");
 
-  tr->Print();
+  //tr->Print();
 
-  cout << tr->GetEntries() << endl;
+  //cout << tr->GetEntries() << endl;
 
   // set up branch for hits
   TClonesArray* fTrackerCollection = new TClonesArray("Ex02TrackerHit");
