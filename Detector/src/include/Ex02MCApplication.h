@@ -23,6 +23,7 @@
 #include "Ex02TrackerSD.h"
 
 #include <TVirtualMCRootManager.h>
+#include <TPythia8.h>
 
 class Ex02MCStack;
 
