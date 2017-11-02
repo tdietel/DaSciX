@@ -282,6 +282,8 @@ void Ex02MCApplication::GeneratePrimaries()
 {
 /// Fill the user stack (derived from TVirtualMCStack) with primary particles.
 
+  fEvGen->GenerateEvent();
+  
     // Track ID (filled by stack)
     Int_t ntr;
 

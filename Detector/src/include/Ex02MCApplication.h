@@ -60,6 +60,8 @@ class Ex02MCApplication : public TVirtualMCApplication
     virtual void PostTrack();
     virtual void FinishPrimary();
     virtual void FinishEvent();
+
+    virtual void SetEventGenerator(TPythia8* evgen) { fEvGen = evgen; }
     
     void   ReadEvent(Int_t i);
 
@@ -78,6 +80,8 @@ class Ex02MCApplication : public TVirtualMCApplication
     Ex02TrackerSD*           fTrackerSD;       ///< Tracker SD
     TVirtualMagField*        fMagField;        ///< Magnetic field
     Bool_t                   fOldGeometry;     ///< Option for geometry definition
+
+    TPythia8* fEvGen;
 
   ClassDef(Ex02MCApplication,1)  //Interface to MonteCarlo application
 };
